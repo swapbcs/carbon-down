@@ -8,6 +8,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Carbon Down | Analyse</title>
   </head>
   <body>
@@ -43,7 +50,40 @@
         </div>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <!-- Form section -->
+      <section>
+        <form id="analyse-form">
+          <div class="dropdown" id="analyse-dropdown">
+            <div class="dropdown-trigger">
+              <button
+                class="button"
+                aria-haspopup="true"
+                aria-controls="dropdown-menu"
+              >
+                <span id="selected-analyse">Select Type</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content" id="analyse-content">
+                <div class="dropdown-item is-active" id="flights">Flights</div>
+                <div class="dropdown-item" id="vehicles">Vehicles</div>
+              </div>
+            </div>
+          </div>
+          <div class="select">
+            <select id="analyse-select">
+              <option value="flights" selected>Flights</option>
+              <option value="vehicles">Vehicles</option>
+            </select>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+    </main>
     <footer></footer>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
