@@ -1,3 +1,19 @@
+// when you want to style this, copy and paste it into the html file for easiness
+// once done, add the newly styled component back here
+const vehicleContainer = `
+<div id="vehicle-selection-container">
+<div>
+    <p>Distance</p>
+      <input
+        class="input is-normal"
+        type="text"
+        placeholder="Normal input"
+      />
+    <p>kilometers</p>
+  </div>
+</div>
+`;
+
 $(document).ready(function () {
   // Check for click events on the navbar burger icon
   $(".navbar-burger").click(function () {
@@ -7,51 +23,49 @@ $(document).ready(function () {
   });
 });
 
-const analyseDropdown = $("#analyse-dropdown");
+const getVehicleMakes = async () => {
+  try {
+    const response = await fetch(
+      "https://www.carboninterface.com/api/v1/vehicle_makes",
+      {
+        headers: {
+          Authorization: "Bearer OYudcQZQdsg9HqyGFQ",
+        },
+      }
+    );
 
-const toggleDropdown = function (event) {
-  event.preventDefault();
-
-  // check if opened
-  if (analyseDropdown.hasClass("is-active")) {
-    // remove is-active class
-    analyseDropdown.removeClass("is-active");
-  } else {
-    // set class name to is-active
-    analyseDropdown.addClass("is-active");
-  }
+    if (response.status === 200) {
+      const data = await response.json();
+      return data;
+    }
+  } catch (error) {}
 };
 
-const getAnalyseSelection = function (event) {
-  // figure out which element triggered the event
-  const target = $(event.target);
-
-  // get the id and text of the target
-  const id = target.attr("id");
-  const text = target.text();
-
-  // set the button text to reflect the selected value
-  $("#selected-analyse").text(text);
-};
-
-const onSubmit = function (event) {
+const onSubmit = async (event) => {
   event.preventDefault();
-  console.log("submit");
   const analyseSelected = $("#analyse-select").val();
-  console.log(analyseSelected);
-  // get the value of the selected type
-  // get the value of the selected type
-  // get the value of the selected type
-  // get the value of the selected type
-  // make API request
-  // get response
+
+  if (analyseSelected === "vehicles") {
+    const vehicleMakesList = await getVehicleMakes();
+    const vehicleMakeOptions = vehicleMakesList.map((vehicleMake) => {
+      return `<option value=${vehicleMake.data.id} selected>${vehicleMake.data.attributes.name}</option>`;
+    });
+
+    const vehicleMakeDropdown = `
+    <div class="select">
+      <p>Vehicle Make</p>
+      <select id="vehicle-make-select">
+        ${vehicleMakeOptions}
+      </select>
+    </div>
+    `;
+    $("#analyse-form").append(vehicleContainer);
+    $("#vehicle-selection-container").append(vehicleMakeDropdown);
+    console.log(vehicleMakesList);
+  } else if (analyseSelected === "flights") {
+    // get list of airport
+  }
   // render card with response
 };
-
-// add event listener for dropdown button
-analyseDropdown.on("click", toggleDropdown);
-
-// add event listener for selecting the dropdown value
-$("#analyse-content").on("click", getAnalyseSelection);
 
 $("#analyse-form").on("submit", onSubmit);
