@@ -43,12 +43,24 @@ const getVehicleMakes = async () => {
 
 const getVehicleModel = async (vehicleMakeId) => {
   try {
-    const response = await fetch(`https://www.carboninterface.com/api/v1/vehicle_make/${vehicleMakeId}/vehicle_models`,
+    const response = await fetch(
+      `https://www.carboninterface.com/api/v1/vehicle_make/${vehicleMakeId}/vehicle_models/`,
+      {
+        headers: {
+          Authorization: "Bearer OYudcQZQdsg9HqyGFQ",
+        },
+      }
+    );
 
-    )
-    return response
-  } catch (error) {}
-}
+    console.log(response);
+    if (response.status === 200) {
+      const data = await response.json();
+      return data;
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 const onSubmit = async (event) => {
   event.preventDefault();
@@ -56,20 +68,32 @@ const onSubmit = async (event) => {
   if (analyseSelected === "vehicles") {
     const vehicleMakesList = await getVehicleMakes();
     const vehicleMakeOptions = vehicleMakesList.map((vehicleMake) => {
-      return `<option class="make-option" value=${vehicleMake.data.id} selected>${vehicleMake.data.attributes.name}</option>`;
+      return `<option class="vehicle-option" value=${vehicleMake.data.id} selected>${vehicleMake.data.attributes.name}</option>`;
     });
 
     const vehicleMakeDropdown = `
     <div class="select">
       <p>Vehicle Make</p>
-      <select id="vehicle-make-select">
+      <select id="vehicle-make-select" class="vehicle-make-class">
         ${vehicleMakeOptions}
       </select>
     </div>
     `;
     $("#analyse-form").append(vehicleContainer);
     $("#vehicle-selection-container").append(vehicleMakeDropdown);
-    $(".make-option").on("click", (event)=> {console.log($(this).value())})
+
+    // target the id in the dropdown list
+    $(".vehicle-make-class").on("click", (event) => {
+      $(event.target).on("click", async (event) => {
+        // THE LOWER REQUEST does not work, brings back 404
+
+        // const vehicleModelList = await getVehicleModel(event.target.value);
+        // console.log(vehicleModelList);
+        console.log(event.target.value);
+
+        // map through the response and create a list item/option for each item (same as the make list)
+      });
+    });
 
     console.log(vehicleMakesList);
   } else if (analyseSelected === "flights") {
