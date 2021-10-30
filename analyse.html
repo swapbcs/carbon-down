@@ -53,35 +53,51 @@
     <main>
       <!-- Form section -->
       <section>
-        <form id="analyse-form">
-          <div class="dropdown" id="analyse-dropdown">
-            <div class="dropdown-trigger">
-              <button
-                class="button"
-                aria-haspopup="true"
-                aria-controls="dropdown-menu"
-              >
-                <span id="selected-analyse">Select Type</span>
-                <span class="icon is-small">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </button>
+        <div class="container">
+          <form id="analyse-form">
+            <div class="select">
+              <select id="analyse-select">
+                <option value="flights" selected>Flights</option>
+                <option value="vehicles">Vehicles</option>
+              </select>
             </div>
-            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-              <div class="dropdown-content" id="analyse-content">
-                <div class="dropdown-item is-active" id="flights">Flights</div>
-                <div class="dropdown-item" id="vehicles">Vehicles</div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <!-- Add input menu for (departure) from and (landing) to -->
+        <div class="distance">
+          <div class="container">
+            <div class="columns">
+              <div class="column is-one-quarter">
+                <p>From:</p>
+
+                <input
+                  class="input is-normal"
+                  type="text"
+                  placeholder="Normal input"
+                />
+              </div>
+              <div class="column is-one-quarter">
+                <p>To:</p>
+                <input
+                  class="input is-normal"
+                  type="text"
+                  placeholder="Normal input"
+                />
               </div>
             </div>
+            <!-- Add passengers input -->
+
+            <p>Passengers:</p>
+            <input
+              class="input is-normal"
+              type="text"
+              placeholder="Normal input"
+            />
+
+            <button class="button is-light">Analyse</button>
           </div>
-          <div class="select">
-            <select id="analyse-select">
-              <option value="flights" selected>Flights</option>
-              <option value="vehicles">Vehicles</option>
-            </select>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+        </div>
       </section>
     </main>
     <footer></footer>
