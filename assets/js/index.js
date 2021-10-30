@@ -41,14 +41,22 @@ const getVehicleMakes = async () => {
   } catch (error) {}
 };
 
+const getVehicleModel = async (vehicleMakeId) => {
+  try {
+    const response = await fetch(`https://www.carboninterface.com/api/v1/vehicle_make/${vehicleMakeId}/vehicle_models`,
+
+    )
+    return response
+  } catch (error) {}
+}
+
 const onSubmit = async (event) => {
   event.preventDefault();
   const analyseSelected = $("#analyse-select").val();
-
   if (analyseSelected === "vehicles") {
     const vehicleMakesList = await getVehicleMakes();
     const vehicleMakeOptions = vehicleMakesList.map((vehicleMake) => {
-      return `<option value=${vehicleMake.data.id} selected>${vehicleMake.data.attributes.name}</option>`;
+      return `<option class="make-option" value=${vehicleMake.data.id} selected>${vehicleMake.data.attributes.name}</option>`;
     });
 
     const vehicleMakeDropdown = `
@@ -61,6 +69,8 @@ const onSubmit = async (event) => {
     `;
     $("#analyse-form").append(vehicleContainer);
     $("#vehicle-selection-container").append(vehicleMakeDropdown);
+    $(".make-option").on("click", (event)=> {console.log($(this).value())})
+
     console.log(vehicleMakesList);
   } else if (analyseSelected === "flights") {
     // get list of airport
