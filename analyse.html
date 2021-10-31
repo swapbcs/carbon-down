@@ -92,6 +92,7 @@
                 <input
                   class="input is-medium is-info"
                   type="text"
+                  id="flight-from-input"
                   placeholder="Normal input"
                 />
               </div>
@@ -100,6 +101,7 @@
                 <input
                   class="input is-medium is-info"
                   type="text"
+                  id="flight-to-input"
                   placeholder="Normal input"
                 />
               </div>
@@ -110,15 +112,15 @@
 
                 <div class="select is-info pl-6">
                   <select
-                    id="analyse-select"
+                    id="flight-passenger-dropdown"
                     class="select is-medium pl-6 is-hovered"
                   >
-                    <option value="number" selected>1</option>
-                    <option value="number" selected>2</option>
-                    <option value="number" selected>3</option>
-                    <option value="number" selected>4</option>
-                    <option value="number" selected>5</option>
-                    <option value="number" selected>6</option>
+                    <option value="1" selected>1</option>
+                    <option value="2" selected>2</option>
+                    <option value="3" selected>3</option>
+                    <option value="4" selected>4</option>
+                    <option value="5" selected>5</option>
+                    <option value="6" selected>6</option>
                   </select>
                 </div>
               </div>
@@ -132,6 +134,7 @@
                     has-text-light
                     is-medium is-rounded
                   "
+                  id="flight-submit-btn"
                   type="submit"
                 >
                   Submit
@@ -156,6 +159,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <!--Do not change the following order -->
+    <script src="./assets/js/iatas.js"></script>
     <script src="./assets/js/index.js"></script>
   </body>
 </html>

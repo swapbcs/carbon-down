@@ -185,15 +185,7 @@ const calculateCarbonEmission = async function (event) {
     distance_value: distance,
     vehicle_model_id: carModel,
   };
-  var emissionResponse = await getEmissionData(
-    "https://www.carboninterface.com/api/v1/estimates",
-    vehicleData
-  );
-
-  // Output the the emission data on screen
-  $("#emission-output").text(
-    `You caused emission of: ${emissionResponse.data.attributes.carbon_kg} kg of carbon`
-  );
+  await getEmissionEstimate(vehicleData);
 };
 
 // When vehicle/flight dropdown is changed
@@ -204,3 +196,38 @@ $("#analyse-form").on("submit", calculateCarbonEmission);
 
 $("#flight-from-to-container").css("display", "block");
 $("#vehicle-selection-container").css("display", "none");
+
+
+// Flight processing
+
+const processFlightEmission = async function () {
+  const from = $("#flight-from-input").val();
+  const to = $("#flight-to-input").val();
+  const passengers = $("#flight-passenger-dropdown").val();
+  const flightData = {
+    "type": "flight",
+    "passengers": passengers,
+    "legs": [
+        {
+            "departure_airport": from,
+            "destination_airport": to
+        }
+    ]
+}
+  await getEmissionEstimate(flightData);
+};
+
+$("#flight-submit-btn").click(processFlightEmission);
+
+async function getEmissionEstimate(vehicleData) {
+  var emissionResponse = await getEmissionData(
+    "https://www.carboninterface.com/api/v1/estimates",
+    vehicleData
+  );
+
+  // Output the the emission data on screen
+  $("#emission-output").text(
+    `You caused emission of: ${emissionResponse.data.attributes.carbon_kg} kg of carbon`
+  );
+}
+
