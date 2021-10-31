@@ -57,7 +57,6 @@ const getVehicleModel = async (vehicleMakeId) => {
       }
     );
 
-    console.log(response);
     if (response.status === 200) {
       const data = await response.json();
       return data;
@@ -148,13 +147,14 @@ const onEmissionCategoryChange = async (event) => {
   } else if (analyseSelected === "flights") {
     // get list of airport
     $("#vehicle-selection-container").css("display", "none");
+    $("#vehicle-model-selection-container").css("display", "none");
     $("#flight-from-to-container").css("display", "block");
   }
   // render card with response
 };
 
 // Following code is taken from https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#supplying_request_options
-async function postData(url = "", data = {}) {
+async function getEmissionData(url = "", data = {}) {
   // Default options are marked with *
   const response = await fetch(url, {
     method: "POST",
@@ -171,7 +171,7 @@ const calculateCarbonEmission = async function (event) {
   event.preventDefault();
   // calculate carbon emission based on the input
   const distance = $("#distance-input").val();
-  if(distance =="") {
+  if (distance == "") {
     // If distance value is not given, use 0.
     // TODO: show error message when user does thats
     distance = 0;
@@ -185,14 +185,21 @@ const calculateCarbonEmission = async function (event) {
     distance_value: distance,
     vehicle_model_id: carModel,
   };
-  var emissionResponse = await postData(
+  var emissionResponse = await getEmissionData(
     "https://www.carboninterface.com/api/v1/estimates",
     vehicleData
   );
-  console.log(emissionResponse); // JSON data parsed by `data.json()` call
+
+  // Output the the emission data on screen
+  $("#emission-output").text(
+    `You caused emission of: ${emissionResponse.data.attributes.carbon_kg} kg of carbon`
+  );
 };
 
+// When vehicle/flight dropdown is changed
 $("#analyse-select").change(onEmissionCategoryChange);
+
+// When the submit button is clicked
 $("#analyse-form").on("submit", calculateCarbonEmission);
 
 $("#flight-from-to-container").css("display", "block");
