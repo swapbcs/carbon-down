@@ -19,10 +19,15 @@
   </head>
   <body>
     <header>
-      <nav class="navbar" role="navigation" aria-label="main navigation">
+      <nav
+        id="navbar"
+        class="navbar is-info is-size-4"
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div class="navbar-brand">
-          <a class="navbar-item" href="./index.html">
-            <img src="./assets/images/app-logo.png" width="84" height="28" />
+          <a class="navbar-item-img-max-height" href="./index.html">
+            <img src="./assets/images/planet.gif" width="180" />
           </a>
 
           <a
@@ -40,11 +45,9 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a href="./index.html" class="navbar-item"> Home </a>
+            <a href="./index.html" class="navbar-item is-tab"> Home </a>
+            <a href="./analyse.html" class="navbar-item is-active"> Analyse </a>
             <a href="./plan.html" class="navbar-item"> Plan </a>
-            <a href="./analyse.html" class="navbar-item is-tab is-active">
-              Analyse
-            </a>
             <a href="./about.html" class="navbar-item"> About Us </a>
           </div>
         </div>
@@ -53,54 +56,107 @@
     <main>
       <!-- Form section -->
       <section>
-        <div class="container">
+        <div
+          class="
+            container
+            pt-6
+            pb-4
+            pr-6
+            pl-6
+            is-centered is-size-5
+            has-text-centered
+          "
+        >
           <form id="analyse-form">
-            <div class="select">
-              <select id="analyse-select">
-                <option value="flights" selected>Flights</option>
-                <option value="vehicles">Vehicles</option>
-              </select>
+            <div class="container">
+              <div class="columns is-centered">
+                <div class="column">
+                  <div class="select is-info is-hovered">
+                    <select id="analyse-select">
+                      <option value="flights" selected>Flights</option>
+                      <option value="vehicles">Vehicles</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="columns is-centered">
+                <div class="column">
+                  <button
+                    class="button is-info has-text-light is-medium is-rounded"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
             </div>
-            <button type="submit">Submit</button>
           </form>
         </div>
         <!-- Add input menu for (departure) from and (landing) to -->
         <div class="distance">
           <div class="container">
-            <div class="columns">
+            <div class="columns is-centered">
               <div class="column is-one-quarter">
-                <p>From:</p>
+                <p class="is-size-4 pb-4 has-text-centered">From</p>
 
                 <input
-                  class="input is-normal"
+                  class="input is-medium is-info"
                   type="text"
                   placeholder="Normal input"
                 />
               </div>
               <div class="column is-one-quarter">
-                <p>To:</p>
+                <p class="is-size-4 pb-4 has-text-centered">To</p>
                 <input
-                  class="input is-normal"
+                  class="input is-medium is-info"
                   type="text"
                   placeholder="Normal input"
                 />
+              </div>
+
+              <div class="column is-one-quarter">
+                <!-- Add passengers input -->
+                <p class="is-size-4 pb-4 pl-6">Passengers</p>
+
+                <div class="select is-info pl-6">
+                  <select
+                    id="analyse-select"
+                    class="select is-medium pl-6 is-hovered"
+                  >
+                    <option value="number" selected>1</option>
+                    <option value="number" selected>2</option>
+                    <option value="number" selected>3</option>
+                    <option value="number" selected>4</option>
+                    <option value="number" selected>5</option>
+                    <option value="number" selected>6</option>
+                  </select>
+                </div>
               </div>
             </div>
-            <!-- Add passengers input -->
-
-            <p>Passengers:</p>
-            <input
-              class="input is-normal"
-              type="text"
-              placeholder="Normal input"
-            />
-
-            <button class="button is-light">Analyse</button>
+            <div class="columns is-centered">
+              <div class="column">
+                <button
+                  class="
+                    button
+                    is-centered is-danger
+                    has-text-light
+                    is-medium is-rounded
+                  "
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </main>
-    <footer></footer>
+    <nav class="navbar is-fixed-bottom has-background-info-light">
+      <footer class="footer">
+        <div class="content has-text-centered"></div>
+      </footer>
+    </nav>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
       integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -12,10 +12,15 @@
   </head>
   <body>
     <header>
-      <nav class="navbar" role="navigation" aria-label="main navigation">
+      <nav
+        id="navbar"
+        class="navbar is-info is-size-4"
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div class="navbar-brand">
-          <a class="navbar-item" href="./index.html">
-            <img src="./assets/images/app-logo.png" width="84" height="28" />
+          <a class="navbar-item-img-max-height" href="./index.html">
+            <img src="./assets/images/planet.gif" width="180" />
           </a>
 
           <a
@@ -33,11 +38,9 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a href="./index.html" class="navbar-item"> Home </a>
-            <a href="./plan.html" class="navbar-item is-tab is-active">
-              Plan
-            </a>
+            <a href="./index.html" class="navbar-item is-tab"> Home </a>
             <a href="./analyse.html" class="navbar-item"> Analyse </a>
+            <a href="./plan.html" class="navbar-item"> Plan </a>
             <a href="./about.html" class="navbar-item"> About Us </a>
           </div>
         </div>
@@ -234,11 +237,11 @@
         </div>
       </div>
     </main>
-    <footer class="is-flex">
-      <div class="is-justify-content-center">
-        <h3>This is a footer.</h3>
-      </div>
-    </footer>
+    <nav class="navbar is-fixed-bottom has-background-info-light">
+      <footer class="footer">
+        <div class="content has-text-centered"></div>
+      </footer>
+    </nav>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
       integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="

@@ -12,10 +12,15 @@
   </head>
   <body>
     <header>
-      <nav class="navbar" role="navigation" aria-label="main navigation">
+      <nav
+        id="navbar"
+        class="navbar is-info is-size-4"
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div class="navbar-brand">
-          <a class="navbar-item" href="./index.html">
-            <img src="./assets/images/app-logo.png" width="84" height="28" />
+          <a class="navbar-item-img-max-height" href="./index.html">
+            <img src="./assets/images/planet.gif" width="180" />
           </a>
 
           <a
@@ -33,18 +38,57 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a href="./index.html" class="navbar-item"> Home </a>
-            <a href="./plan.html" class="navbar-item"> Plan </a>
+            <a href="./index.html" class="navbar-item is-tab"> Home </a>
             <a href="./analyse.html" class="navbar-item"> Analyse </a>
-            <a href="./about.html" class="navbar-item is-tab is-active">
-              About Us
-            </a>
+            <a href="./plan.html" class="navbar-item"> Plan </a>
+            <a href="./about.html" class="navbar-item is-active"> About Us </a>
           </div>
         </div>
       </nav>
     </header>
-    <main></main>
-    <footer></footer>
+    <main>
+      <div class="container">
+        <div class="columns">
+          <div class="column is-one-quarter">
+            <figure class="image is-128x128">
+              <img
+                class="is-rounded image1"
+                src="./assets/images/Picture1.png"
+              />
+            </figure>
+            <figure class="image is-128x128">
+              <img
+                class="is-rounded image1"
+                src="./assets/images/Picture3.png"
+              />
+            </figure>
+            <figure class="image is-128x128">
+              <img class="is-rounded" src="./assets/images/Picture2.png" />
+            </figure>
+            <figure class="image is-128x128">
+              <img class="is-rounded" src="./assets/images/Picture4.png" />
+            </figure>
+          </div>
+          <div class="box is-size-3">
+            <br />
+            I'm in a box ... here comes a short "about us" and why we have
+            choosen this topic/theme for our project. <br /><br />Lorem ipsum,
+            dolor sit amet consectetur adipisicing elit. Laudantium, excepturi
+            alias? Mollitia esse tempore ut impedit, culpa rem necessitatibus
+            laudantium error omnis rerum magnam, voluptatum unde laborum dolorem
+            ducimus. Minima! <br /><br />Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Accusamus odio et alias nostrum modi nobis cumque
+            quod harum similique itaque maxime, voluptas enim, rem quae atque
+            earum totam sint rerum?
+          </div>
+        </div>
+      </div>
+    </main>
+    <nav class="navbar is-fixed-bottom has-background-info-light">
+      <footer class="footer">
+        <div class="content has-text-centered"></div>
+      </footer>
+    </nav>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
       integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
