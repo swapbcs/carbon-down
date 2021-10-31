@@ -44,7 +44,7 @@ const getVehicleMakes = async () => {
 const getVehicleModel = async (vehicleMakeId) => {
   try {
     const response = await fetch(
-      `https://www.carboninterface.com/api/v1/vehicle_make/${vehicleMakeId}/vehicle_models/`,
+      `https://www.carboninterface.com/api/v1/vehicle_makes/${vehicleMakeId}/vehicle_models/`,
       {
         headers: {
           Authorization: "Bearer OYudcQZQdsg9HqyGFQ",
@@ -62,14 +62,26 @@ const getVehicleModel = async (vehicleMakeId) => {
   }
 };
 
+var sortVehicles = function (a, b) {
+  if (a.data.attributes.name < b.data.attributes.name) {
+    return -1;
+  }
+  if (a.data.attributes.name > b.data.attributes.name) {
+    return 1;
+  }
+  return 0;
+};
+
 const onSubmit = async (event) => {
   event.preventDefault();
   const analyseSelected = $("#analyse-select").val();
   if (analyseSelected === "vehicles") {
     const vehicleMakesList = await getVehicleMakes();
-    const vehicleMakeOptions = vehicleMakesList.map((vehicleMake) => {
-      return `<option class="vehicle-option" value=${vehicleMake.data.id} selected>${vehicleMake.data.attributes.name}</option>`;
-    });
+    const vehicleMakeOptions = vehicleMakesList
+      .sort(sortVehicles)
+      .map((vehicleMake) => {
+        return `<option class="vehicle-option" value=${vehicleMake.data.id} selected>${vehicleMake.data.attributes.name}</option>`;
+      });
 
     const vehicleMakeDropdown = `
     <div class="select">
@@ -83,19 +95,15 @@ const onSubmit = async (event) => {
     $("#vehicle-selection-container").append(vehicleMakeDropdown);
 
     // target the id in the dropdown list
-    $(".vehicle-make-class").on("click", (event) => {
-      $(event.target).on("click", async (event) => {
-        // THE LOWER REQUEST does not work, brings back 404
-
-        // const vehicleModelList = await getVehicleModel(event.target.value);
-        // console.log(vehicleModelList);
-        console.log(event.target.value);
-
-        // map through the response and create a list item/option for each item (same as the make list)
-      });
+    $("#vehicle-make-select").change(async (event) => {
+      var selectedVehicle = event.target.value;
+      console.log("Getting data for ", selectedVehicle);
+      const vehicleModelList = await getVehicleModel(selectedVehicle);
+      console.log("list of vehicles", vehicleModelList);
+      // map through the response and create a list item/option for each item (same as the make list)
     });
 
-    console.log(vehicleMakesList);
+    // console.log(vehicleMakesList);
   } else if (analyseSelected === "flights") {
     // get list of airport
   }
@@ -103,3 +111,7 @@ const onSubmit = async (event) => {
 };
 
 $("#analyse-form").on("submit", onSubmit);
+
+var array = ["a", "b", "c"];
+var newArray = array.map((element) => "---" + element + "***");
+console.log(newArray);
