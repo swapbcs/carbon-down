@@ -197,12 +197,35 @@ $("#analyse-form").on("submit", calculateCarbonEmission);
 $("#flight-from-to-container").css("display", "block");
 $("#vehicle-selection-container").css("display", "none");
 
-
+// ---------------------------------
 // Flight processing
+// ---------------------------------
+
+// Create dropdown of airports programatically
+const sortIatas = function(a, b) {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+}
+
+const airportOptionList = iatas
+.filter((iata) => iata.name != null)
+.sort(sortIatas)
+.map((airportIataObj) =>  `<option class="vehicle-option" value=${airportIataObj.iata} selected>${airportIataObj.name} (${airportIataObj.iata})</option>`
+)
+$("#flight-from-dropdown").empty(); // Remove the existing options
+$("#flight-from-dropdown").append(airportOptionList); 
+$("#flight-to-dropdown").empty(); // Remove the existing options
+$("#flight-to-dropdown").append(airportOptionList); 
+
 
 const processFlightEmission = async function () {
-  const from = $("#flight-from-input").val();
-  const to = $("#flight-to-input").val();
+  const from = $("#flight-from-dropdown").val();
+  const to = $("#flight-to-dropdown").val();
   const passengers = $("#flight-passenger-dropdown").val();
   const flightData = {
     "type": "flight",
