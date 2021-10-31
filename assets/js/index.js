@@ -153,20 +153,45 @@ const onEmissionCategoryChange = async (event) => {
   // render card with response
 };
 
-const calculateCarbonEmission = function (event) {
+// Following code is taken from https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#supplying_request_options
+async function postData(url = "", data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer OYudcQZQdsg9HqyGFQ",
+    },
+    body: JSON.stringify(data),
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+const calculateCarbonEmission = async function (event) {
   event.preventDefault();
   // calculate carbon emission based on the input
   const distance = $("#distance-input").val();
-  const carMake = $("#vehicle-make-select").val();
+  if(distance =="") {
+    // If distance value is not given, use 0.
+    // TODO: show error message when user does thats
+    distance = 0;
+  }
   const carModel = $("#vehicle-model-select").val();
 
   // Call carbon API to get the carbon emission
-  console.log(`
-  distance = ${distance}
-  carMake = ${carMake}
-  carModel = ${carModel}
-  `);
+  const vehicleData = {
+    type: "vehicle",
+    distance_unit: "km",
+    distance_value: distance,
+    vehicle_model_id: carModel,
+  };
+  var emissionResponse = await postData(
+    "https://www.carboninterface.com/api/v1/estimates",
+    vehicleData
+  );
+  console.log(emissionResponse); // JSON data parsed by `data.json()` call
 };
+
 $("#analyse-select").change(onEmissionCategoryChange);
 $("#analyse-form").on("submit", calculateCarbonEmission);
 
