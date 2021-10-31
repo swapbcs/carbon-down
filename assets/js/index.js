@@ -91,6 +91,8 @@ const onSubmit = async (event) => {
       </select>
     </div>
     `;
+    //Remove the existing vechicle selection container
+    $("#vehicle-selection-container").remove();
     $("#analyse-form").append(vehicleContainer);
     $("#vehicle-selection-container").append(vehicleMakeDropdown);
 
