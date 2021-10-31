@@ -2,16 +2,21 @@
 // once done, add the newly styled component back here
 const vehicleContainer = `
 <div id="vehicle-selection-container">
-<div>
-    <p>Distance</p>
+  <div class="columns">
+    <p class="column is-flex-grow-0">Distance</p>
       <input
-        class="input is-normal"
+        class="input is-normal column"
         type="text"
+        id = "distance-input"
         placeholder="Normal input"
       />
-    <p>kilometers</p>
+    <p class="column is-flex-grow-0">kilometers</p>
   </div>
 </div>
+`;
+
+const vehicleModelContainer = `
+<div id="vehicle-model-selection-container">
 `;
 
 $(document).ready(function () {
@@ -72,10 +77,12 @@ var sortVehicles = function (a, b) {
   return 0;
 };
 
-const onSubmit = async (event) => {
+const onEmissionCategoryChange = async (event) => {
   event.preventDefault();
   const analyseSelected = $("#analyse-select").val();
   if (analyseSelected === "vehicles") {
+    $("#vehicle-selection-container").css("display", "block");
+    $("#flight-from-to-container").css("display", "none");
     const vehicleMakesList = await getVehicleMakes();
     const vehicleMakeOptions = vehicleMakesList
       .sort(sortVehicles)
@@ -84,7 +91,7 @@ const onSubmit = async (event) => {
       });
 
     const vehicleMakeDropdown = `
-    <div class="select">
+    <div class="select my-5">
       <p>Vehicle Make</p>
       <select id="vehicle-make-select" class="vehicle-make-class">
         ${vehicleMakeOptions}
@@ -93,27 +100,75 @@ const onSubmit = async (event) => {
     `;
     //Remove the existing vechicle selection container
     $("#vehicle-selection-container").remove();
+    $("#vehicle-model-selection-container").remove();
     $("#analyse-form").append(vehicleContainer);
     $("#vehicle-selection-container").append(vehicleMakeDropdown);
 
     // target the id in the dropdown list
     $("#vehicle-make-select").change(async (event) => {
+      event.preventDefault();
       var selectedVehicle = event.target.value;
-      console.log("Getting data for ", selectedVehicle);
       const vehicleModelList = await getVehicleModel(selectedVehicle);
-      console.log("list of vehicles", vehicleModelList);
       // map through the response and create a list item/option for each item (same as the make list)
+      const vehicleModelOptions = vehicleModelList
+        // .sort(sortVehicles)
+        .map((vehicleModel) => {
+          return `<option class="vehicle-option" value=${vehicleModel.data.id} selected>${vehicleModel.data.attributes.name} ${vehicleModel.data.attributes.year}</option>`;
+        });
+
+      const vehicleModelDropdown = `
+      <div class="select">
+      <p>Vehicle Models</p>
+      <select id="vehicle-model-select" class="vehicle-make-class">
+        ${vehicleModelOptions}
+      </select>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-flex-grow-0">
+        <button
+          class="
+            button
+            is-centered is-danger
+            has-text-light
+            is-medium is-rounded
+          "
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+      `;
+      $("#vehicle-model-selection-container").remove();
+      $("#analyse-form").append(vehicleModelContainer);
+      $("#vehicle-model-selection-container").append(vehicleModelDropdown);
     });
 
     // console.log(vehicleMakesList);
   } else if (analyseSelected === "flights") {
     // get list of airport
+    $("#vehicle-selection-container").css("display", "none");
+    $("#flight-from-to-container").css("display", "block");
   }
   // render card with response
 };
 
-$("#analyse-form").on("submit", onSubmit);
+const calculateCarbonEmission = function (event) {
+  event.preventDefault();
+  // calculate carbon emission based on the input
+  const distance = $("#distance-input").val();
+  const carMake = $("#vehicle-make-select").val();
+  const carModel = $("#vehicle-model-select").val();
 
-var array = ["a", "b", "c"];
-var newArray = array.map((element) => "---" + element + "***");
-console.log(newArray);
+  // Call carbon API to get the carbon emission
+  console.log(`
+  distance = ${distance}
+  carMake = ${carMake}
+  carModel = ${carModel}
+  `);
+};
+$("#analyse-select").change(onEmissionCategoryChange);
+$("#analyse-form").on("submit", calculateCarbonEmission);
+
+$("#flight-from-to-container").css("display", "block");
+$("#vehicle-selection-container").css("display", "none");
