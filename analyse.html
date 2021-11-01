@@ -79,68 +79,28 @@
                   </div>
                 </div>
               </div>
+
+              <!-- div which contains the dynamic form elements -->
+              <div id="dynamic-form-content"></div>
+
+              <div class="columns is-centered">
+                <div class="column is-flex-grow-0">
+                  <button
+                    class="
+                      button
+                      is-centered is-danger
+                      has-text-light
+                      is-medium is-rounded
+                    "
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
             </div>
           </form>
         </div>
-        <!-- Add input menu for (departure) from and (landing) to -->
-        <div class="distance">
-          <div class="container" id="flight-from-to-container">
-            <div class="columns is-centered">
-              <div class="column is-one-quarter">
-                <p class="is-size-4 pb-4 has-text-centered">From</p>
-                <div class="select is-info is-hovered">
-                  <select id="flight-from-dropdown">
-                  </select>
-                </div>
-              </div>
-              <div class="column is-one-quarter">
-                <p class="is-size-4 pb-4 has-text-centered">To</p>
-                <div class="select is-info is-hovered">
-                  <select id="flight-to-dropdown">
-                  </select>
-                </div>
-              </div>
-
-              <div class="column is-one-quarter">
-                <!-- Add passengers input -->
-                <p class="is-size-4 pb-4 pl-6">Passengers</p>
-
-                <div class="select is-info pl-6">
-                  <select
-                    id="flight-passenger-dropdown"
-                    class="select is-medium pl-6 is-hovered"
-                  >
-                    <option value="1" selected>1</option>
-                    <option value="2" selected>2</option>
-                    <option value="3" selected>3</option>
-                    <option value="4" selected>4</option>
-                    <option value="5" selected>5</option>
-                    <option value="6" selected>6</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="columns is-centered">
-              <div class="column is-flex-grow-0">
-                <button
-                  class="
-                    button
-                    is-centered is-danger
-                    has-text-light
-                    is-medium is-rounded
-                  "
-                  id="flight-submit-btn"
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Carbon Emission Data-->
-        <div id="emission-output"></div>
       </section>
     </main>
     <nav class="navbar is-fixed-bottom has-background-info-light">
