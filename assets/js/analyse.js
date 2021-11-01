@@ -132,7 +132,7 @@ const renderVehicleMake = function (options) {
 };
 
 const renderVehicleModel = function (options) {
-  return `<div class="column">
+  return `<div class="column" id="vehicle-models-dropdown">
     <div class="select is-info is-hovered">
       <select id="vehicle-model">${options}</select>
     </div>
@@ -169,6 +169,75 @@ const renderVehicleFormElements = async function () {
   $("#vehicle-make").on("change", handleVehicleMakeChange);
 };
 
+const renderVehicleCarbonCard = function (data) {
+  const card = `<div class="card">
+    <div class="card-content">
+      <div class="content">
+        <div class="is-size-3">${data.data.attributes.vehicle_make} - ${data.data.attributes.vehicle_model} (${data.data.attributes.vehicle_year})</div>
+        <hr />
+        <div class="is-size-4 my-2">Carbon Emissions</div>
+        <div class="my-4">
+          <div class="is-size-5 p-2">${data.data.attributes.carbon_g} grams</div>
+          <div class="is-size-5 p-2">${data.data.attributes.carbon_lb} pounds</div>
+          <div class="is-size-5 p-2">${data.data.attributes.carbon_kg} kilograms</div>
+          <div class="is-size-5 p-2">${data.data.attributes.carbon_mt} metric tonnes</div>
+        </div>
+      </div>
+      <div>
+        <button
+          class="button is-success is-medium is-rounded card-footer-item"
+          id="save-to-plan-btn"
+        >
+          Save To Plan
+        </button>
+      </div>
+    </div>
+  </div>`;
+
+  // empty parent
+  $("#carbon-card-container").empty();
+
+  // append to parent
+  $("#carbon-card-container").append(card);
+};
+
+const renderFlightCarbonCard = function (data) {
+  // construct card
+  const card = `<div class="card">
+    <div class="card-content">
+      <div class="content">
+        <div class="is-size-3">${data.data.attributes.legs[0].departure_airport} -> ${data.data.attributes.legs[0].destination_airport}</div>
+        <div class="is-size-5">
+          <i class="fas fa-users"></i>
+          <span class="ml-3">${data.data.attributes.passengers} passengers</span>
+        </div>
+        <hr />
+        <div class="is-size-4 my-2">Carbon Emissions</div>
+        <div class="my-4">
+          <div class="is-size-5 p-2">${data.data.attributes.carbon_g} grams</div>
+          <div class="is-size-5 p-2">${data.data.attributes.carbon_lb} pounds</div>
+          <div class="is-size-5 p-2">${data.data.attributes.carbon_kg} kilograms</div>
+          <div class="is-size-5 p-2">${data.data.attributes.carbon_mt} metric tonnes</div>
+        </div>
+      </div>
+      <div>
+        <button
+          class="button is-success is-medium is-rounded card-footer-item"
+          id="save-to-plan-btn"
+        >
+          Save To Plan
+        </button>
+      </div>
+    </div>
+  </div>`;
+
+  // empty parent
+  $("#carbon-card-container").empty();
+
+  // append to parent
+  $("#carbon-card-container").append(card);
+};
+
 const handleVehicleMakeChange = async function () {
   // get vehicle make id from selection
   const vehicleMakeId = $("#vehicle-make").val();
@@ -190,6 +259,9 @@ const handleVehicleMakeChange = async function () {
 
   // render vehicle model
   const vehicleModelsDropDown = renderVehicleModel(vehicleModelOptions);
+
+  // remove models if it exists
+  $("#vehicle-models-dropdown").remove();
 
   $("#vehicle-form-elements").append(vehicleModelsDropDown);
 };
@@ -251,6 +323,7 @@ const handleFormSubmit = async function (event) {
     console.log(data);
 
     // render card on page
+    renderFlightCarbonCard(data);
   }
 
   // if vehicles
@@ -276,6 +349,9 @@ const handleFormSubmit = async function (event) {
     );
 
     console.log(data);
+
+    // render card on page
+    renderVehicleCarbonCard(data);
   }
 };
 
