@@ -199,6 +199,10 @@ const renderVehicleCarbonCard = function (data) {
 
   // append to parent
   $("#carbon-card-container").append(card);
+
+  currentEmissionData = data.data;
+
+  $("#save-to-plan-btn").on("click", savePlanToLocalStorageVehicle);
 };
 
 let currentEmissionData = null;
@@ -392,6 +396,27 @@ const savePlanToLocalStorageFlight = function () {
   };
 
   emissionData.flights.push(currentFlightPlan);
+
+  // store the emission data back in localStorage
+  localStorage.setItem("emissionData", JSON.stringify(emissionData));
+};
+
+const savePlanToLocalStorageVehicle = function (event) {
+  // save the data into local storage
+  event.preventDefault();
+  let emissionData = getEmissionDataFromStorage();
+  let currentVehiclePlan = {
+    vehicle_make: currentEmissionData.attributes.vehicle_make,
+    vehicle_model: currentEmissionData.attributes.vehicle_model,
+    vehicle_year: currentEmissionData.attributes.vehicle_year,
+    distance: 100,
+    carbon_g: currentEmissionData.attributes.carbon_g,
+    carbon_mt: currentEmissionData.attributes.carbon_mt,
+    carbon_lb: currentEmissionData.attributes.carbon_lb,
+    carbon_kg: currentEmissionData.attributes.carbon_kg,
+  };
+
+  emissionData.vehicles.push(currentVehiclePlan);
 
   // store the emission data back in localStorage
   localStorage.setItem("emissionData", JSON.stringify(emissionData));
