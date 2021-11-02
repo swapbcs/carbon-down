@@ -141,9 +141,9 @@ const renderVehicleModel = function (options) {
 
 const renderDistance = function () {
   return `<div class="column">
-    <div class="is-info is-hovered">
+    <div class="is-one-quarter">
       <input
-        class="input"
+        class="input is-info is-hovered"
         type="number"
         id="vehicle-distance"
         placeholder="Distance (km)"
@@ -201,6 +201,8 @@ const renderVehicleCarbonCard = function (data) {
   $("#carbon-card-container").append(card);
 };
 
+let currentEmissionData = null;
+
 const renderFlightCarbonCard = function (data) {
   // construct card
   const card = `<div class="card">
@@ -236,6 +238,10 @@ const renderFlightCarbonCard = function (data) {
 
   // append to parent
   $("#carbon-card-container").append(card);
+
+  currentEmissionData = data.data;
+
+  $("#save-to-plan-btn").on("click", savePlanToLocalStorageFlight);
 };
 
 const handleVehicleMakeChange = async function () {
@@ -353,6 +359,42 @@ const handleFormSubmit = async function (event) {
     // render card on page
     renderVehicleCarbonCard(data);
   }
+};
+
+const getEmissionDataFromStorage = function () {
+  // Retrieves the emission data from localStorage
+  let emissionData = localStorage.getItem("emissionData");
+  if (emissionData === null) {
+    //  we are storing the data for the first time
+    emissionData = {
+      flights: [],
+      vehicles: [],
+    };
+  } else {
+    // Convert string to json
+    emissionData = JSON.parse(emissionData);
+  }
+  return emissionData;
+};
+
+const savePlanToLocalStorageFlight = function () {
+  // save the data into local storage
+  let emissionData = getEmissionDataFromStorage();
+  let currentFlightPlan = {
+    departure_airport: currentEmissionData.attributes.legs[0].departure_airport,
+    destination_airport:
+      currentEmissionData.attributes.legs[0].destination_airport,
+    passengers: currentEmissionData.attributes.passengers,
+    carbon_g: currentEmissionData.attributes.carbon_g,
+    carbon_mt: currentEmissionData.attributes.carbon_mt,
+    carbon_lb: currentEmissionData.attributes.carbon_lb,
+    carbon_kg: currentEmissionData.attributes.carbon_kg,
+  };
+
+  emissionData.flights.push(currentFlightPlan);
+
+  // store the emission data back in localStorage
+  localStorage.setItem("emissionData", JSON.stringify(emissionData));
 };
 
 $(document).ready(function () {
