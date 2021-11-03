@@ -80,7 +80,7 @@ renderFlightCarbonCard(emissionData);
 renderVehicleCarbonCard(emissionData);
 
 
-
+// adds event listener on delete button for cards, deletes data from local storage accordingly
 $("main").on("click", ".delete-plan", function(event) {
   let id = $(event.target).data('id');
   console.log($(event.target).data('type'));
@@ -93,8 +93,4 @@ $("main").on("click", ".delete-plan", function(event) {
   }
   localStorage.setItem("emissionData", JSON.stringify(emissionData));
   $(this).parent().parent().remove();
-  
-  /*.parent().prev().children().first().val();
-  var spanText = $(event.target).parent().prev().prev().children().first().text()
-  localStorage.setItem('event'+spanText, JSON.stringify(savedEvent))*/
 })
