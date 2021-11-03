@@ -180,7 +180,7 @@ const renderVehicleCarbonCard = function (data) {
         
           <div class="is-size-5 p-2">${data.data.attributes.carbon_lb} pounds</div>
           <div class="is-size-5 p-2">${data.data.attributes.carbon_kg} kilograms</div>
-       
+          <div class="title is-3 p-2 has-text-danger">You would need ${Math.ceil((data.data.attributes.carbon_kg)/22)} tree(s) and a whole year to offset your emissions!</div>
         </div>
       </div>
       <div>
@@ -223,6 +223,7 @@ const renderFlightCarbonCard = function (data) {
          
           <div class="is-size-5 p-2">${data.data.attributes.carbon_lb} pounds</div>
           <div class="is-size-5 p-2">${data.data.attributes.carbon_kg} kilograms</div>
+          <div class="title is-3 p-2 has-text-danger">You would need ${Math.floor((data.data.attributes.carbon_kg)/22)} trees and a whole year to offset your emissions!</div>
          
         </div>
       </div>
@@ -393,6 +394,7 @@ const savePlanToLocalStorageFlight = function () {
     carbon_mt: currentEmissionData.attributes.carbon_mt,
     carbon_lb: currentEmissionData.attributes.carbon_lb,
     carbon_kg: currentEmissionData.attributes.carbon_kg,
+    id: "" + Math.random()
   };
 
   emissionData.flights.push(currentFlightPlan);
@@ -414,6 +416,7 @@ const savePlanToLocalStorageVehicle = function (event) {
     carbon_mt: currentEmissionData.attributes.carbon_mt,
     carbon_lb: currentEmissionData.attributes.carbon_lb,
     carbon_kg: currentEmissionData.attributes.carbon_kg,
+    id:"" + Math.random()
   };
 
   emissionData.vehicles.push(currentVehiclePlan);

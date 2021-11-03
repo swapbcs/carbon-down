@@ -34,8 +34,9 @@ const renderFlightCarbonCard = function (emissionData) {
            
             <div class="is-size-5 p-2">${flightsData[i].carbon_lb} pounds</div>
             <div class="is-size-5 p-2">${flightsData[i].carbon_kg} kilograms</div>
-      
+            <div class="title is-3 p-2 has-text-danger">You would need ${Math.floor((flightsData[i].carbon_kg)/22)} trees and a whole year to offset your emissions!</div>
             </div>
+            <button data-type="flights" data-id="${flightsData[i].id}" class=" delete-plan button is-centered is-danger has-text-lightis-medium is-rounded">Delete</button>
         </div>
 
         </div>
@@ -60,8 +61,10 @@ const renderVehicleCarbonCard = function (emissionData) {
    
     <div class="is-size-5 p-2">${vehiclesData[i].carbon_lb} pounds</div>
     <div class="is-size-5 p-2">${vehiclesData[i].carbon_kg} kilograms</div>
+    <div class="title is-3 p-2 has-text-danger">You would need ${Math.ceil((vehiclesData[i].carbon_kg)/22)} tree(s) and a whole year to offset your emissions!</div>
  
     </div>
+    <button data-type="vehicles" data-id="${vehiclesData[i].id}" class=" delete-plan button is-centered is-danger has-text-lightis-medium is-rounded">Delete</button>
     </div>
     
     </div>
@@ -75,3 +78,23 @@ const renderVehicleCarbonCard = function (emissionData) {
 let emissionData = getEmissionDataFromStorage();
 renderFlightCarbonCard(emissionData);
 renderVehicleCarbonCard(emissionData);
+
+
+
+$("main").on("click", ".delete-plan", function(event) {
+  let id = $(event.target).data('id');
+  console.log($(event.target).data('type'));
+  console.log(id);
+  if($(event.target).data('type') === "vehicles") {
+    emissionData.vehicles = emissionData.vehicles.filter(vehicle => vehicle.id != id);
+  }
+  else {
+    emissionData.flights = emissionData.flights.filter(flight => flight.id != id);
+  }
+  localStorage.setItem("emissionData", JSON.stringify(emissionData));
+  $(this).parent().parent().remove();
+  
+  /*.parent().prev().children().first().val();
+  var spanText = $(event.target).parent().prev().prev().children().first().text()
+  localStorage.setItem('event'+spanText, JSON.stringify(savedEvent))*/
+})
