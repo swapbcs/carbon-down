@@ -19,10 +19,15 @@
   </head>
   <body>
     <header>
-      <nav class="navbar" role="navigation" aria-label="main navigation">
+      <nav
+        id="navbar"
+        class="navbar is-info is-size-4"
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div class="navbar-brand">
-          <a class="navbar-item" href="./index.html">
-            <img src="./assets/images/app-logo.png" width="84" height="28" />
+          <a class="navbar-item-img-max-height" href="./index.html">
+            <img src="./assets/images/planet.gif" width="180" />
           </a>
 
           <a
@@ -40,11 +45,9 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a href="./index.html" class="navbar-item"> Home </a>
+            <a href="./index.html" class="navbar-item is-tab"> Home </a>
+            <a href="./analyse.html" class="navbar-item is-active"> Analyse </a>
             <a href="./plan.html" class="navbar-item"> Plan </a>
-            <a href="./analyse.html" class="navbar-item is-tab is-active">
-              Analyse
-            </a>
             <a href="./about.html" class="navbar-item"> About Us </a>
           </div>
         </div>
@@ -53,60 +56,71 @@
     <main>
       <!-- Form section -->
       <section>
-        <div class="container">
+        <div
+          class="
+            container
+            pt-6
+            pb-4
+            pr-6
+            pl-6
+            is-centered is-size-5
+            has-text-centered
+          "
+        >
           <form id="analyse-form">
-            <div class="select">
-              <select id="analyse-select">
-                <option value="flights" selected>Flights</option>
-                <option value="vehicles">Vehicles</option>
-              </select>
+            <div class="container">
+              <div class="columns is-centered">
+                <div class="column">
+                  <!-- Jenny: margin -->
+                  <p>
+                    By making your selections you can analyse your carbon
+                    emission impact
+                  </p>
+                  <div class="select is-info is-hovered">
+                    <select id="analyse-select">
+                      <!-- Jenny <option value="select" selected>Select</option> -->
+                      <option value="flights" selected>Flights</option>
+                      <option value="vehicles">Vehicles</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- div which contains the dynamic form elements -->
+              <div id="dynamic-form-content"></div>
+
+              <div class="columns is-centered">
+                <div class="column is-flex-grow-0">
+                  <button
+                    class="
+                      button
+                      is-centered is-danger
+                      has-text-light
+                      is-medium is-rounded
+                    "
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
             </div>
-            <button type="submit">Submit</button>
           </form>
         </div>
-        <!-- Add input menu for (departure) from and (landing) to -->
-        <div class="distance">
-          <div class="container">
-            <div class="columns">
-              <div class="column is-one-quarter">
-                <p>From:</p>
-
-                <input
-                  class="input is-normal"
-                  type="text"
-                  placeholder="Normal input"
-                />
-              </div>
-              <div class="column is-one-quarter">
-                <p>To:</p>
-                <input
-                  class="input is-normal"
-                  type="text"
-                  placeholder="Normal input"
-                />
-              </div>
-            </div>
-            <!-- Add passengers input -->
-
-            <p>Passengers:</p>
-            <input
-              class="input is-normal"
-              type="text"
-              placeholder="Normal input"
-            />
-
-            <button class="button is-light">Analyse</button>
-          </div>
-        </div>
       </section>
+
+      <div class="container" id="carbon-card-container"></div>
     </main>
-    <footer></footer>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
       integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <!--Do not change the following order -->
+    <script src="./assets/js/iatas.js"></script>
+    <script src="./assets/js/analyse.js"></script>
     <script src="./assets/js/index.js"></script>
   </body>
 </html>
