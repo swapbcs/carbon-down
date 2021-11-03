@@ -36,10 +36,10 @@ const getVehicleModelOptions = function (data) {
 
 // function to sort iatas alphabetically
 const sortIatas = function (a, b) {
-  if (a.name < b.name) {
+  if (a.name > b.name) {
     return -1;
   }
-  if (a.name > b.name) {
+  if (a.name < b.name) {
     return 1;
   }
   return 0;
@@ -96,12 +96,12 @@ const renderPassengers = function () {
         id="flight-passenger-dropdown"
         class="select is-medium pl-6 is-hovered"
       >
-        <option value="1" selected>1</option>
-        <option value="2" selected>2</option>
-        <option value="3" selected>3</option>
-        <option value="4" selected>4</option>
-        <option value="5" selected>5</option>
         <option value="6" selected>6</option>
+        <option value="5" selected>5</option>
+        <option value="4" selected>4</option>
+        <option value="3" selected>3</option>
+        <option value="2" selected>2</option>
+        <option value="1" selected>1</option>
       </select>
     </div>
   </div>`;
@@ -177,10 +177,10 @@ const renderVehicleCarbonCard = function (data) {
         <hr />
         <div class="is-size-4 my-2">Carbon Emissions</div>
         <div class="my-4">
-          <div class="is-size-5 p-2">${data.data.attributes.carbon_g} grams</div>
+        
           <div class="is-size-5 p-2">${data.data.attributes.carbon_lb} pounds</div>
           <div class="is-size-5 p-2">${data.data.attributes.carbon_kg} kilograms</div>
-          <div class="is-size-5 p-2">${data.data.attributes.carbon_mt} metric tonnes</div>
+       
         </div>
       </div>
       <div>
@@ -220,10 +220,10 @@ const renderFlightCarbonCard = function (data) {
         <hr />
         <div class="is-size-4 my-2">Carbon Emissions</div>
         <div class="my-4">
-          <div class="is-size-5 p-2">${data.data.attributes.carbon_g} grams</div>
+         
           <div class="is-size-5 p-2">${data.data.attributes.carbon_lb} pounds</div>
           <div class="is-size-5 p-2">${data.data.attributes.carbon_kg} kilograms</div>
-          <div class="is-size-5 p-2">${data.data.attributes.carbon_mt} metric tonnes</div>
+         
         </div>
       </div>
       <div>

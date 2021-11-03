@@ -31,10 +31,10 @@ const renderFlightCarbonCard = function (emissionData) {
             <hr />
             <div class="is-size-4 my-2">Carbon Emissions</div>
             <div class="my-4">
-            <div class="is-size-5 p-2">${flightsData[i].carbon_g} grams</div>
+           
             <div class="is-size-5 p-2">${flightsData[i].carbon_lb} pounds</div>
             <div class="is-size-5 p-2">${flightsData[i].carbon_kg} kilograms</div>
-            <div class="is-size-5 p-2">${flightsData[i].carbon_mt} metric tonnes</div>
+      
             </div>
         </div>
 
@@ -57,10 +57,10 @@ const renderVehicleCarbonCard = function (emissionData) {
     <hr />
     <div class="is-size-4 my-2">Carbon Emissions</div>
     <div class="my-4">
-    <div class="is-size-5 p-2">${vehiclesData[i].carbon_g} grams</div>
+   
     <div class="is-size-5 p-2">${vehiclesData[i].carbon_lb} pounds</div>
     <div class="is-size-5 p-2">${vehiclesData[i].carbon_kg} kilograms</div>
-    <div class="is-size-5 p-2">${vehiclesData[i].carbon_mt} metric tonnes</div>
+ 
     </div>
     </div>
     
