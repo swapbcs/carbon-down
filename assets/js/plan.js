@@ -23,7 +23,9 @@ const renderFlightCarbonCard = function (emissionData) {
         <div class="card">
         <div class="card-content">
         <div class="content">
-            <div class="is-size-3">${flightsData[i].departure_airport} -> ${flightsData[i].destination_airport}</div>
+            <div class="is-size-3">${flightsData[i].departure_airport} -> ${
+      flightsData[i].destination_airport
+    }</div>
             <div class="is-size-5">
             <i class="fas fa-users"></i>
             <span class="ml-3">${flightsData[i].passengers} passengers</span>
@@ -33,10 +35,16 @@ const renderFlightCarbonCard = function (emissionData) {
             <div class="my-4">
            
             <div class="is-size-5 p-2">${flightsData[i].carbon_lb} pounds</div>
-            <div class="is-size-5 p-2">${flightsData[i].carbon_kg} kilograms</div>
-            <div class="title is-3 p-2 has-text-danger">You would need ${Math.floor((flightsData[i].carbon_kg)/22)} trees and a whole year to offset your emissions!</div>
+            <div class="is-size-5 p-2">${
+              flightsData[i].carbon_kg
+            } kilograms</div>
+            <div class="title is-3 p-2 has-text-danger">You would need ${Math.floor(
+              flightsData[i].carbon_kg / 22
+            )} trees and a whole year to offset your emissions!</div>
             </div>
-            <button data-type="flights" data-id="${flightsData[i].id}" class=" delete-plan button is-centered is-danger has-text-lightis-medium is-rounded">Delete</button>
+            <button data-type="flights" data-id="${
+              flightsData[i].id
+            }" class=" delete-plan button is-centered is-danger has-text-lightis-medium is-rounded">Delete</button>
         </div>
 
         </div>
@@ -54,17 +62,23 @@ const renderVehicleCarbonCard = function (emissionData) {
     const card = `<div class="card">
     <div class="card-content">
     <div class="content">
-    <div class="is-size-3">${vehiclesData[i].vehicle_make} - ${vehiclesData[i].vehicle_model} (${vehiclesData[i].vehicle_year})</div>
+    <div class="is-size-3">${vehiclesData[i].vehicle_make} - ${
+      vehiclesData[i].vehicle_model
+    } (${vehiclesData[i].vehicle_year})</div>
     <hr />
     <div class="is-size-4 my-2">Carbon Emissions</div>
     <div class="my-4">
    
     <div class="is-size-5 p-2">${vehiclesData[i].carbon_lb} pounds</div>
     <div class="is-size-5 p-2">${vehiclesData[i].carbon_kg} kilograms</div>
-    <div class="title is-3 p-2 has-text-danger">You would need ${Math.ceil((vehiclesData[i].carbon_kg)/22)} tree(s) and a whole year to offset your emissions!</div>
+    <div class="title is-3 p-2 has-text-danger">You would need ${Math.ceil(
+      vehiclesData[i].carbon_kg / 22
+    )} tree(s) and a whole year to offset your emissions!</div>
  
     </div>
-    <button data-type="vehicles" data-id="${vehiclesData[i].id}" class=" delete-plan button is-centered is-danger has-text-lightis-medium is-rounded">Delete</button>
+    <button data-type="vehicles" data-id="${
+      vehiclesData[i].id
+    }" class=" delete-plan button is-centered is-danger has-text-lightis-medium is-rounded">Delete</button>
     </div>
     
     </div>
@@ -79,18 +93,20 @@ let emissionData = getEmissionDataFromStorage();
 renderFlightCarbonCard(emissionData);
 renderVehicleCarbonCard(emissionData);
 
-
 // adds event listener on delete button for cards, deletes data from local storage accordingly
-$("main").on("click", ".delete-plan", function(event) {
-  let id = $(event.target).data('id');
-  console.log($(event.target).data('type'));
+$("main").on("click", ".delete-plan", function (event) {
+  let id = $(event.target).data("id");
+  console.log($(event.target).data("type"));
   console.log(id);
-  if($(event.target).data('type') === "vehicles") {
-    emissionData.vehicles = emissionData.vehicles.filter(vehicle => vehicle.id != id);
-  }
-  else {
-    emissionData.flights = emissionData.flights.filter(flight => flight.id != id);
+  if ($(event.target).data("type") === "vehicles") {
+    emissionData.vehicles = emissionData.vehicles.filter(
+      (vehicle) => vehicle.id != id
+    );
+  } else {
+    emissionData.flights = emissionData.flights.filter(
+      (flight) => flight.id != id
+    );
   }
   localStorage.setItem("emissionData", JSON.stringify(emissionData));
   $(this).parent().parent().remove();
-})
+});
