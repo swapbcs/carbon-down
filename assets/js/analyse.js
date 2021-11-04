@@ -11,7 +11,7 @@ const getVehicleMakeOptions = async () => {
     "https://www.carboninterface.com/api/v1/vehicle_makes",
     {
       headers: {
-        Authorization: "Bearer OYudcQZQdsg9HqyGFQ",
+        Authorization: "Bearer z1rbt2UbgivqgTTuUQSg",
       },
     }
   );
@@ -70,7 +70,7 @@ const getIataOptions = function () {
 
 // function to render from airport
 const renderFromDropdown = function (options) {
-  return `<div class="column is-one-third">
+  return `<div class="column is-two-fifths">
     <p class="is-size-4 pb-4 has-text-centered">From</p>
     <div class="select is-info is-hovered">
       <select id="flight-from-dropdown">${options}</select>
@@ -80,7 +80,7 @@ const renderFromDropdown = function (options) {
 
 // function to render to airport
 const renderToDropdown = function (options) {
-  return `<div class="column is-one-third">
+  return `<div class="column is-two-fifths">
     <p class="is-size-4 pb-4 has-text-centered">To</p>
     <div class="select is-info is-hovered">
       <select id="flight-to-dropdown">${options}</select>
@@ -140,16 +140,18 @@ const renderVehicleModel = function (options) {
 };
 
 const renderDistance = function () {
-  return `<div class="column">
-    <div class="is-one-quarter">
+  return `
+  <div class="column">
+    <div">
       <input
-        class="input is-info is-hovered"
+        class="input is-medium is-info is-hovered"
         type="number"
         id="vehicle-distance"
         placeholder="Distance (km)"
       />
     </div>
-  </div>`;
+  </div>
+  `;
 };
 
 // function to render the vehicle form elements
@@ -173,14 +175,22 @@ const renderVehicleCarbonCard = function (data) {
   const card = `<div class="card">
     <div class="card-content">
       <div class="content">
-        <div class="is-size-3">${data.data.attributes.vehicle_make} - ${data.data.attributes.vehicle_model} (${data.data.attributes.vehicle_year})</div>
+        <div class="is-size-3">${data.data.attributes.vehicle_make} - ${
+    data.data.attributes.vehicle_model
+  } (${data.data.attributes.vehicle_year})</div>
         <hr />
         <div class="is-size-4 my-2">Carbon Emissions</div>
         <div class="my-4">
         
-          <div class="is-size-5 p-2">${data.data.attributes.carbon_lb} pounds</div>
-          <div class="is-size-5 p-2">${data.data.attributes.carbon_kg} kilograms</div>
-          <div class="title is-3 p-2 has-text-danger">You would need ${Math.ceil((data.data.attributes.carbon_kg)/22)} tree(s) and a whole year to offset your emissions!</div>
+          <div class="is-size-5 p-2">${
+            data.data.attributes.carbon_lb
+          } pounds</div>
+          <div class="is-size-5 p-2">${
+            data.data.attributes.carbon_kg
+          } kilograms</div>
+          <div class="title is-3 p-2 has-text-danger">You would need ${Math.ceil(
+            data.data.attributes.carbon_kg / 22
+          )} tree(s) and a whole year to offset your emissions!</div>
         </div>
       </div>
       <div>
@@ -209,32 +219,44 @@ let currentEmissionData = null;
 
 const renderFlightCarbonCard = function (data) {
   // construct card
-  const card = `<div class="card">
+  const card = `<div class="columns is-centered">
+    <div class="card">
     <div class="card-content">
-      <div class="content">
-        <div class="is-size-3">${data.data.attributes.legs[0].departure_airport} -> ${data.data.attributes.legs[0].destination_airport}</div>
+      <div class="content has-text-centered">
+        <div class="is-size-3">${
+          data.data.attributes.legs[0].departure_airport
+        } -> ${data.data.attributes.legs[0].destination_airport}</div>
         <div class="is-size-5">
           <i class="fas fa-users"></i>
-          <span class="ml-3">${data.data.attributes.passengers} passengers</span>
+          <span class="ml-3">${
+            data.data.attributes.passengers
+          } passengers</span>
         </div>
         <hr />
         <div class="is-size-4 my-2">Carbon Emissions</div>
         <div class="my-4">
          
-          <div class="is-size-5 p-2">${data.data.attributes.carbon_lb} pounds</div>
-          <div class="is-size-5 p-2">${data.data.attributes.carbon_kg} kilograms</div>
-          <div class="title is-3 p-2 has-text-danger">You would need ${Math.floor((data.data.attributes.carbon_kg)/22)} trees and a whole year to offset your emissions!</div>
+          <div class="is-size-5 p-2">${
+            data.data.attributes.carbon_lb
+          } pounds</div>
+          <div class="is-size-5 p-2">${
+            data.data.attributes.carbon_kg
+          } kilograms</div>
+          <div class="title is-size-4 p-2 has-text-danger">You would need ${Math.floor(
+            data.data.attributes.carbon_kg / 22
+          )} trees and a whole year <br /> to offset your emissions!</div>
          
         </div>
       </div>
-      <div>
+      <div class="buttons is-centered">
         <button
-          class="button is-success is-medium is-rounded card-footer-item"
+          class="button is-success is-medium is-rounded card-footer-item is-size-4"
           id="save-to-plan-btn"
         >
           Save To Plan
         </button>
       </div>
+    </div>
     </div>
   </div>`;
 
@@ -258,7 +280,7 @@ const handleVehicleMakeChange = async function () {
     `https://www.carboninterface.com/api/v1/vehicle_makes/${vehicleMakeId}/vehicle_models/`,
     {
       headers: {
-        Authorization: "Bearer OYudcQZQdsg9HqyGFQ",
+        Authorization: "Bearer z1rbt2UbgivqgTTuUQSg",
       },
     }
   );
@@ -316,7 +338,7 @@ const handleFormSubmit = async function (event) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer OYudcQZQdsg9HqyGFQ",
+          Authorization: "Bearer z1rbt2UbgivqgTTuUQSg",
         },
         body: JSON.stringify({
           type: "flight",
@@ -348,7 +370,7 @@ const handleFormSubmit = async function (event) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer OYudcQZQdsg9HqyGFQ",
+          Authorization: "Bearer z1rbt2UbgivqgTTuUQSg",
         },
         body: JSON.stringify({
           type: "vehicle",
@@ -394,7 +416,7 @@ const savePlanToLocalStorageFlight = function () {
     carbon_mt: currentEmissionData.attributes.carbon_mt,
     carbon_lb: currentEmissionData.attributes.carbon_lb,
     carbon_kg: currentEmissionData.attributes.carbon_kg,
-    id: "" + Math.random()
+    id: "" + Math.random(),
   };
 
   emissionData.flights.push(currentFlightPlan);
@@ -416,7 +438,7 @@ const savePlanToLocalStorageVehicle = function (event) {
     carbon_mt: currentEmissionData.attributes.carbon_mt,
     carbon_lb: currentEmissionData.attributes.carbon_lb,
     carbon_kg: currentEmissionData.attributes.carbon_kg,
-    id:"" + Math.random()
+    id: "" + Math.random(),
   };
 
   emissionData.vehicles.push(currentVehiclePlan);
