@@ -30,23 +30,67 @@
 
 ### Project Link
 
-- Please Click [here](https://github.com/jitasek/carbon-down) to see the contents of our project in Github
+- Please click here [here](https://github.com/jitasek/carbon-down) to see the contents of our project in Github
 - Here [here](https://jitasek.github.io/carbon-down/) you can access directly the web page
+- Please click here [here](https://docs.google.com/presentation/d/1TYoXgIxT0TbWKb5QAIZFguArPE2ShADOfkmo18jEbus/edit#slide=id.gfd4231a3f5_0_3) to see the presentation of the project
 
 ### Getting Started
 
+- Clone the GitHub project into your local machine
+- Navigate into the project
+- Open the project into VSCode
+- Open the 'index.html' 3M & open with live server(Alt+L Alt+O)
+
+```
+git clone git@github.com:jitasek/carbon-down.git
+cd carbon-down
+code .
+```
+
 ### Contributors
 
-## About Th Project
+- Jenny : https://github.com/JenBerlin
+- Jitka : https://github.com/jitasek
+- Vicente : https://github.com/vvicunag
+- Amir : https://github.com/Amir-Fard2025
 
-- User Flow
-- Technologies Used
-- Web APIs
-- Wireframes
+### About The Project
 
-## Plans For Improvement
+<p>Carbon Down app brings a real-world-problem to user's attention: 
+the common responsible goal to track/reduce carbon emissions. 
+It throws light on the carbon impact of their travels with the aim to raise awareness of this important topic and help them navigate towards a more environmentally responsible life.</p>
 
-## Screenshots
+#### User Flow
+
+<p>As a travel, I want to analyse my already planned travel trips by flight and/or car, so that I can get an idea about the carbon emission caused by the trip.
+To keep all my analysed data in one place , I’m able to save and display them on a page.</p>
+
+#### Technologies Used
+
+<p>The following technologies are implemented in this project:</p>
+
+- HTML
+- CSS
+- Bulma, Modern CSS
+- JavaScript
+- jQuery
+- Localstorage
+
+#### Web APIs
+
+- The following APIs are implemented in this project:
+  [Carbon Interface](https://www.carboninterface.com)
+  [Iata](https://www.iata.org/en/services/statistics),
+
+#### Plans For Improvement
+
+<p>Including other common CO2 emitting activities (e.g. shipping)
+Suggesting alternative (transport) options
+Building User Community 
+Collaborating with other platforms, such as ...
+Providing it in multiple languages</p>
+
+#### Screenshots
 
 - Desktop index page
 - Desktop index page with recent searches
