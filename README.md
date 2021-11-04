@@ -2,10 +2,12 @@
 
 # Table of Content
 
-[ProjectLink](#ProjectLink)
-[GettingStarted](#GettingStarted)
-[Contributors](#Contributors)
-[AboutTheProject](#AboutTheProject)
+<ul> Table of Content
+
+<li>[ProjectLink](#ProjectLink)</li>
+<li>[GettingStarted](#GettingStarted)</li>
+<li>[Contributors](#Contributors)</li>
+<li>[AboutTheProject](#AboutTheProject)</li>
 User Flows
 Technologies Used
 Web APIs
@@ -20,6 +22,7 @@ Mobile index page
 Mobile results page
 Mobile favourites page
 Tablet
+</ul>
 
 #ProjectLink
 #GettingStarted
