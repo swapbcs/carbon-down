@@ -26,10 +26,35 @@ const getVehicleMakeOptions = async () => {
   return vehicleMakeOptions;
 };
 
+function doesMatchExists(searchVehicle, index, allVehicles) {
+  // This function returns false if the duplicate is present
+
+  // Get the vechile name+model number to look for a match
+  let searchName =
+    searchVehicle.data.attributes.name +
+    " " +
+    searchVehicle.data.attributes.year;
+
+  // Check if a matching element exists before the current element
+  // because we want to accept the first occurrance but not the next
+  for (let i = 0; i < index; i++) {
+    let currName =
+      allVehicles[i].data.attributes.name +
+      " " +
+      allVehicles[i].data.attributes.year;
+    if (currName === searchName) {
+      return false;
+    }
+  }
+  return true;
+}
+
 const getVehicleModelOptions = function (data) {
-  const vehicleModelOptions = data.map((vehicleModel) => {
-    return `<option class="vehicle-option" value=${vehicleModel.data.id} selected>${vehicleModel.data.attributes.name} ${vehicleModel.data.attributes.year}</option>`;
-  });
+  const vehicleModelOptions = data
+    .filter((v, index) => doesMatchExists(v, index, data))
+    .map((vehicleModel) => {
+      return `<option class="vehicle-option" value=${vehicleModel.data.id} selected>${vehicleModel.data.attributes.name} ${vehicleModel.data.attributes.year}</option>`;
+    });
 
   return vehicleModelOptions;
 };
