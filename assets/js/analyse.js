@@ -180,13 +180,13 @@ const renderVehicleCarbonCard = function (data) {
     data.data.attributes.vehicle_model
   } (${data.data.attributes.vehicle_year})</div>
         <hr />
-        <div class="is-size-4">Carbon Emissions</div>
+        <div class="has-text-info is-size-3">Carbon Emissions</div>
         <div class="my-4">
         
           <div class="is-size-5 p-2">${
             data.data.attributes.carbon_lb
           } pounds</div>
-          <div class="is-size-5 p-2">${
+          <div class="has-text-info is-size-3 p-2">${
             data.data.attributes.carbon_kg
           } kilograms</div>
           <div class="title is-size-4 p-2 has-text-danger">You would need ${Math.ceil(
@@ -239,13 +239,13 @@ const renderFlightCarbonCard = function (data) {
           } passengers</span>
         </div>
         <hr />
-        <div class="is-size-4">Carbon Emissions</div>
+        <div class="has-text-info is-size-3">Carbon Emissions</div>
         <div class="my-4">
          
           <div class="is-size-5 p-2">${
             data.data.attributes.carbon_lb
           } pounds</div>
-          <div class="is-size-5 p-2">${
+          <div class="has-text-info is-size-3 p-2">${
             data.data.attributes.carbon_kg
           } kilograms</div>
           <div class="title is-size-4 p-2 has-text-danger">You would need ${Math.floor(

@@ -20,9 +20,9 @@ const renderFlightCarbonCard = function (emissionData) {
   for (let i = 0; i < flightsData.length; i++) {
     // construct card
     const card = `<div class="column">
-        <div class="card">
+        <div class="card has-background-danger-light mb-6">
         <div class="card-content">
-        <div class="content">
+        <div class="content has-text-centered">
             <div class="is-size-3">${flightsData[i].departure_airport} -> ${
       flightsData[i].destination_airport
     }</div>
@@ -31,16 +31,16 @@ const renderFlightCarbonCard = function (emissionData) {
             <span class="ml-3">${flightsData[i].passengers} passengers</span>
             </div>
             <hr />
-            <div class="is-size-4 my-2">Carbon Emissions</div>
+            <div class="is-size-3 has-text-info">Carbon Emissions</div>
             <div class="my-4">
            
             <div class="is-size-5 p-2">${flightsData[i].carbon_lb} pounds</div>
-            <div class="is-size-5 p-2">${
+            <div class="has-text-info is-size-3 p-2">${
               flightsData[i].carbon_kg
             } kilograms</div>
-            <div class="title is-3 p-2 has-text-danger">You would need ${Math.floor(
+            <div class="title is-size-4 p-2 has-text-danger">You would need ${Math.floor(
               flightsData[i].carbon_kg / 22
-            )} trees and a whole year to offset your emissions!</div>
+            )} trees and a whole year <br /> to offset your emissions!</div>
             </div>
             <button data-type="flights" data-id="${
               flightsData[i].id
@@ -59,21 +59,23 @@ const renderFlightCarbonCard = function (emissionData) {
 const renderVehicleCarbonCard = function (emissionData) {
   let vehiclesData = emissionData.vehicles;
   for (let i = 0; i < vehiclesData.length; i++) {
-    const card = `<div class="card">
+    const card = `<div class="card has-background-danger-light mb-6">
     <div class="card-content">
-    <div class="content">
+    <div class="content has-text-centered">
     <div class="is-size-3">${vehiclesData[i].vehicle_make} - ${
       vehiclesData[i].vehicle_model
     } (${vehiclesData[i].vehicle_year})</div>
     <hr />
-    <div class="is-size-4 my-2">Carbon Emissions</div>
+    <div class="has-text-info is-size-3">Carbon Emissions</div>
     <div class="my-4">
    
     <div class="is-size-5 p-2">${vehiclesData[i].carbon_lb} pounds</div>
-    <div class="is-size-5 p-2">${vehiclesData[i].carbon_kg} kilograms</div>
-    <div class="title is-3 p-2 has-text-danger">You would need ${Math.ceil(
+    <div class="has-text-info is-size-3 p-2">${
+      vehiclesData[i].carbon_kg
+    } kilograms</div>
+    <div class="title is-size-4 p-2 has-text-danger">You would need ${Math.ceil(
       vehiclesData[i].carbon_kg / 22
-    )} tree(s) and a whole year to offset your emissions!</div>
+    )} tree(s) and a whole year <br /> to offset your emissions!</div>
  
     </div>
     <button data-type="vehicles" data-id="${
