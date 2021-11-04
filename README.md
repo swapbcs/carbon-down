@@ -1,43 +1,52 @@
-# carbon-down
+<div style="text-align:center"><a href="https://jitasek.github.io/carbon-down/"><img src="./assets/images/app-logo.png"/></a></div>
 
-## Table of Content
+<h1>Carbon-Down</h1>
+
+<h2>Table of Content</h2>
 
 <ul>
 
-<li> <ins>[Project Link](#project-link)</ins> </li>
-<li>[GettingStarted](#GettingStarted)</li>
-<li>[Contributors](#Contributors)</li>
-<li>[AboutTheProject](#AboutTheProject)
-<ul>
-<li>User Flows</li>
-<li>Technologies Used</li>
-<li>Web APIs</li>
-<li>Wireframes</li>
-</ul>
-</li>
-<li>[PlansForImprovement](#PlansForImprovement)</li>
-<li>[Screenshots](#Screenshots)
-<ul>
-<li>Desktop index page</li>
-<li>Desktop index page with recent searches</li>
-<li>Desktop results page</li>
-<li>Desktop favourites page</li>
-<li>Mobile index page</li>
-<li>Mobile results page</li>
-<li>Mobile favourites page</li>
-<li>Tablet</li>
-</ul>
-</li>
-</ul>
+- [Project Link](#project-link)
+- [Getting Started](#getting-started)
+- [Contributors](#contributors)
+- [About The oject](#about-the-project)
 
-### <a name = "(project-link)">project link</a>
+  - [User Flow](#user-flows)
+  - [Technologies Used](#technologies-used)
+  - [Web APIs](#web-apis)
+  - [Wireframes](#wireframes)
 
-### GettingStarted
+- [Plans For Improvement](#plansforimprovement)
+- [Screenshots](#Screenshots)
+
+  - [Desktop index page](#desktop-index-page)
+  - [Desktop index page with recent searches](#desktop-index-page-with-recent-searches)
+  - [Desktop results page](#desktop-results-page)
+  - [Desktop favourites page](#desktop-favourites-page)
+  - [Mobile index page](#mobile-index-page)
+  - [Mobile results page](#mobile-results-page)
+  - [Mobile favourites page](#mobile-favourites-page)
+  - [Tablet](#tablet)
+
+### Project Link
+
+- Please Click [here](https://github.com/jitasek/carbon-down) to see the contents of our project in Github
+- Here [here](https://jitasek.github.io/carbon-down/) you can access directly the web page
+
+### Getting Started
 
 ### Contributors
 
-## AboutTheProject
+## About Th Project
 
-## PlansForImprovement
+- User Flow
+- Technologies Used
+- Web APIs
+- Wireframes
+
+## Plans For Improvement
 
 ## Screenshots
+
+- Desktop index page
+- Desktop index page with recent searches
