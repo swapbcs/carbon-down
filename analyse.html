@@ -45,10 +45,19 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a href="./index.html" class="navbar-item is-tab"> Home </a>
-            <a href="./analyse.html" class="navbar-item is-active"> Analyse </a>
-            <a href="./plan.html" class="navbar-item"> Plan </a>
-            <a href="./about.html" class="navbar-item"> About Us </a>
+            <a href="./index.html" class="navbar-item is-tab is-spaced pr-6">
+              Home
+            </a>
+            <a
+              href="./analyse.html"
+              class="navbar-item is-active is-spaced pr-6"
+            >
+              Analyse
+            </a>
+            <a href="./plan.html" class="navbar-item is-spaced pr-6"> Plan </a>
+            <a href="./about.html" class="navbar-item is-spaced pr-6">
+              About Us
+            </a>
           </div>
         </div>
       </nav>
@@ -71,14 +80,12 @@
             <div class="container">
               <div class="columns is-centered">
                 <div class="column">
-                  <!-- Jenny: margin -->
-                  <p>
-                    By making your selections you can analyse your carbon
-                    emission impact
-                  </p>
-                  <div class="select is-info is-hovered">
+                  <div class="content is-size-3 mt-2 mb-6">
+                    By making your selections <br />
+                    you can analyse your carbon emission impact:
+                  </div>
+                  <div class="select is-info is-hovered mb-3">
                     <select id="analyse-select">
-                      <!-- Jenny <option value="select" selected>Select</option> -->
                       <option value="flights" selected>Flights</option>
                       <option value="vehicles">Vehicles</option>
                     </select>
@@ -87,7 +94,9 @@
               </div>
 
               <!-- div which contains the dynamic form elements -->
-              <div id="dynamic-form-content"></div>
+              <div class="columns">
+                <div class="column" id="dynamic-form-content"></div>
+              </div>
 
               <div class="columns is-centered">
                 <div class="column is-flex-grow-0">
@@ -97,6 +106,8 @@
                       is-centered is-danger
                       has-text-light
                       is-medium is-rounded
+                      mt-5
+                      is-size-4
                     "
                     type="submit"
                   >
