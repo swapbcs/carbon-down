@@ -89,7 +89,7 @@ const renderToDropdown = function (options) {
 };
 
 const renderPassengers = function () {
-  return `<div class="column is-one-third">
+  return `<div class="column is-one-fifth">
     <p class="is-size-4 pb-4 pl-6">Passengers</p>
     <div class="select is-info pl-6">
       <select
@@ -124,7 +124,8 @@ const renderFlightFormElements = function () {
 };
 
 const renderVehicleMake = function (options) {
-  return `<div class="column">
+  return `<div class="column is-narrow">
+  <p class="is-size-4 pb-4 has-text-centered">Brand</p>
     <div class="select is-info is-hovered">
       <select id="vehicle-make">${options}</select>
     </div>
@@ -132,7 +133,8 @@ const renderVehicleMake = function (options) {
 };
 
 const renderVehicleModel = function (options) {
-  return `<div class="column" id="vehicle-models-dropdown">
+  return `<div class="column is-narrow id="vehicle-models-dropdown">
+  <p class="is-size-4 pb-4">Model</p>
     <div class="select is-info is-hovered">
       <select id="vehicle-model">${options}</select>
     </div>
@@ -140,9 +142,9 @@ const renderVehicleModel = function (options) {
 };
 
 const renderDistance = function () {
-  return `
-  <div class="column">
-    <div">
+  return `<div class="column is-narrow">
+  <p class="is-size-4 pb-4 has-text-centered">Distance</p>
+    <div>
       <input
         class="input is-medium is-info is-hovered"
         type="number"
