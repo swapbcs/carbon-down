@@ -1,10 +1,10 @@
 # carbon-down
 
-# Table of Content
+## Table of Content
 
 <ul>
 
-<li> <u> project-link </u> </li>
+<li> <ins>[Project Link](#project-link)</ins> </li>
 <li>[GettingStarted](#GettingStarted)</li>
 <li>[Contributors](#Contributors)</li>
 <li>[AboutTheProject](#AboutTheProject)
@@ -30,11 +30,11 @@
 </li>
 </ul>
 
-## project link
+### <a name = "(project-link)">project link</a>
 
-## GettingStarted
+### GettingStarted
 
-## Contributors
+### Contributors
 
 ## AboutTheProject
 
