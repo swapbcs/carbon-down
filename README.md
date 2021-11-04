@@ -4,7 +4,7 @@
 
 <ul>
 
-<li> <u>[Project Link](#projectlink)</u> </li>
+<li> <u> project-link </u> </li>
 <li>[GettingStarted](#GettingStarted)</li>
 <li>[Contributors](#Contributors)</li>
 <li>[AboutTheProject](#AboutTheProject)
@@ -30,7 +30,7 @@
 </li>
 </ul>
 
-## projectlink
+## project link
 
 ## GettingStarted
 
