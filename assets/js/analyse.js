@@ -172,14 +172,15 @@ const renderVehicleFormElements = async function () {
 };
 
 const renderVehicleCarbonCard = function (data) {
-  const card = `<div class="card">
+  const card = `<div class="columns is-centered">
+  <div class="card has-background-danger-light mb-6">
     <div class="card-content">
-      <div class="content">
+      <div class="content has-text-centered">
         <div class="is-size-3">${data.data.attributes.vehicle_make} - ${
     data.data.attributes.vehicle_model
   } (${data.data.attributes.vehicle_year})</div>
         <hr />
-        <div class="is-size-4 my-2">Carbon Emissions</div>
+        <div class="is-size-4">Carbon Emissions</div>
         <div class="my-4">
         
           <div class="is-size-5 p-2">${
@@ -188,20 +189,25 @@ const renderVehicleCarbonCard = function (data) {
           <div class="is-size-5 p-2">${
             data.data.attributes.carbon_kg
           } kilograms</div>
-          <div class="title is-3 p-2 has-text-danger">You would need ${Math.ceil(
+          <div class="title is-size-4 p-2 has-text-danger">You would need ${Math.ceil(
             data.data.attributes.carbon_kg / 22
-          )} tree(s) and a whole year to offset your emissions!</div>
+          )} tree(s) and a whole year <br /> to offset your emissions!</div>
         </div>
       </div>
       <div>
-        <button
-          class="button is-success is-medium is-rounded card-footer-item"
+        <div class="columns is-centered">
+          <div class="column is-flex-grow-0">
+          <button
+          class="button is-success is-medium is-rounded card-footer-item is-size-4"
           id="save-to-plan-btn"
-        >
+          >
           Save To Plan
-        </button>
+          </button>
+          <div>
+        <div>
       </div>
     </div>
+  </div>
   </div>`;
 
   // empty parent
@@ -220,7 +226,7 @@ let currentEmissionData = null;
 const renderFlightCarbonCard = function (data) {
   // construct card
   const card = `<div class="columns is-centered">
-    <div class="card">
+    <div class="card has-background-danger-light mb-6">
     <div class="card-content">
       <div class="content has-text-centered">
         <div class="is-size-3">${
@@ -233,7 +239,7 @@ const renderFlightCarbonCard = function (data) {
           } passengers</span>
         </div>
         <hr />
-        <div class="is-size-4 my-2">Carbon Emissions</div>
+        <div class="is-size-4">Carbon Emissions</div>
         <div class="my-4">
          
           <div class="is-size-5 p-2">${
@@ -248,13 +254,16 @@ const renderFlightCarbonCard = function (data) {
          
         </div>
       </div>
-      <div class="buttons is-centered">
-        <button
-          class="button is-success is-medium is-rounded card-footer-item is-size-4"
-          id="save-to-plan-btn"
-        >
-          Save To Plan
-        </button>
+        <div class="columns is-centered">
+          <div class="column is-flex-grow-0">
+     
+            <button
+            class="button is-success is-medium is-rounded card-footer-item is-size-4"
+            id="save-to-plan-btn"
+            >
+            Save To Plan
+            </button>
+        </div>
       </div>
     </div>
     </div>
