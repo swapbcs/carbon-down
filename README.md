@@ -2,9 +2,9 @@
 
 # Table of Content
 
-<ul>Table of Content
+<ul>
 
-<li> -[ProjectLink](#ProjectLink) </li>
+<li> # ProjectLink </li>
 <li>[GettingStarted](#GettingStarted)</li>
 <li>[Contributors](#Contributors)</li>
 <li>[AboutTheProject](#AboutTheProject)
@@ -39,3 +39,5 @@
 ## AboutTheProject
 
 ## PlansForImprovement
+
+## Screenshots
