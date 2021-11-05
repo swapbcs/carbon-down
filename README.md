@@ -71,6 +71,7 @@ To keep all my analysed data in one place , I’m able to save and display them 
 - JavaScript
 - jQuery
 - Localstorage
+- Font Awesome
 
 #### Web APIs
 
@@ -108,3 +109,5 @@ Providing it in multiple languages</p>
 - Plan with recent search ![Image](./assets/images/PlanPageHistory.png)
 
 - Local Storage ![Image](./assets/images/LocalStorage.png)
+
+- Local Storage ![Image](./assets/images/AboutUs.png)
