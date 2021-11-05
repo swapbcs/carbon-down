@@ -19,7 +19,7 @@ const getVehicleMakeOptions = async () => {
   // construct option elements
 
   const vehicleMakeOptions = data.sort(sortVehicles).map((vehicleMake) => {
-    return `<option class="vehicle-option" value=${vehicleMake.data.id} selected>${vehicleMake.data.attributes.name}</option>`;
+    return `<option class="vehicle-option" value=${vehicleMake.data.id}>${vehicleMake.data.attributes.name}</option>`;
   });
 
   // return options
@@ -53,7 +53,7 @@ const getVehicleModelOptions = function (data) {
   const vehicleModelOptions = data
     .filter((v, index) => doesMatchExists(v, index, data))
     .map((vehicleModel) => {
-      return `<option class="vehicle-option" value=${vehicleModel.data.id} selected>${vehicleModel.data.attributes.name} ${vehicleModel.data.attributes.year}</option>`;
+      return `<option class="vehicle-option" value=${vehicleModel.data.id}>${vehicleModel.data.attributes.name} ${vehicleModel.data.attributes.year}</option>`;
     });
 
   return vehicleModelOptions;
@@ -263,7 +263,7 @@ const renderFlightCarbonCard = function (data) {
       <div class="content has-text-centered">
         <div class="is-size-3">${
           data.data.attributes.legs[0].departure_airport
-        } -> ${data.data.attributes.legs[0].destination_airport}</div>
+        } <i class="fas fa-arrow-alt-circle-right"></i> ${data.data.attributes.legs[0].destination_airport}</div>
         <div class="is-size-5">
           <i class="fas fa-users"></i>
           <span class="ml-3">${
