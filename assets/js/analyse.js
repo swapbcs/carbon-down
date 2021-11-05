@@ -344,6 +344,7 @@ const handleAnalyseSelect = function () {
   if (userSelection === "flights") {
     // remove previous form elements
     $("#dynamic-form-content").empty();
+    $("#carbon-card-container").empty();
     renderFlightFormElements();
   }
 
@@ -351,6 +352,7 @@ const handleAnalyseSelect = function () {
   if (userSelection === "vehicles") {
     // remove previous form elements
     $("#dynamic-form-content").empty();
+    $("#carbon-card-container").empty();
     renderVehicleFormElements();
   }
 };
