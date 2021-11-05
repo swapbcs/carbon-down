@@ -230,6 +230,7 @@ const renderVehicleCarbonCard = function (data) {
           >
           Save To Plan
           </button>
+          <button class="delete-card button is-danger is-medium is-rounded card-footer-item is-size-4">Delete</button>
           <div>
         <div>
       </div>
@@ -290,6 +291,7 @@ const renderFlightCarbonCard = function (data) {
             >
             Save To Plan
             </button>
+            <button class="delete-card button is-danger is-medium is-rounded card-footer-item is-size-4">Delete</button>
         </div>
       </div>
     </div>
@@ -501,3 +503,7 @@ $(document).ready(function () {
   // add event listener for form submission
   $("#analyse-form").on("submit", handleFormSubmit);
 });
+
+$("main").on("click", ".delete-card", function (event) {
+  $("#carbon-card-container").empty();
+})
