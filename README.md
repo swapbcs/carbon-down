@@ -1,10 +1,8 @@
-<div style="text-align:center"><a href="https://jitasek.github.io/carbon-down/"><img src="./assets/images/app-logo.png"/></a></div>
+<div style="text-align:center"><a href="https://jitasek.github.io/carbon-down/"><img src="./assets/images/Planet_logo.jpg"/></a></div>
 
 <h1>Carbon-Down</h1>
 
 <h2>Table of Content</h2>
-
-<ul>
 
 - [Project Link](#project-link)
 - [Getting Started](#getting-started)
@@ -19,14 +17,12 @@
 - [Plans For Improvement](#plansforimprovement)
 - [Screenshots](#Screenshots)
 
-  - [Desktop index page](#desktop-index-page)
-  - [Desktop index page with recent searches](#desktop-index-page-with-recent-searches)
-  - [Desktop results page](#desktop-results-page)
-  - [Desktop favourites page](#desktop-favourites-page)
-  - [Mobile index page](#mobile-index-page)
-  - [Mobile results page](#mobile-results-page)
-  - [Mobile favourites page](#mobile-favourites-page)
-  - [Tablet](#tablet)
+  - [Index page](#index-page)
+  - [Analyse page Flights](#analyse-page-flights)
+  - [Analyse page Vehicles](#analyse-page-vehicles)
+  - [Plan page](#plan-page)
+  - [Plan with recent search](#plan-with-recent-search)
+  - [Local Storage](#local-storage)
 
 ### Project Link
 
@@ -80,7 +76,16 @@ To keep all my analysed data in one place , I’m able to save and display them 
 
 - The following APIs are implemented in this project:
   [Carbon Interface](https://www.carboninterface.com)
-  [Iata](https://www.iata.org/en/services/statistics),
+  [Iata](https://www.iata.org/en/services/statistics),<p>here we used the API to save the airports' information and later we use it as an object locally</p>
+
+#### Wireframes
+
+> Note:
+> The structure of the code has been built According to the main flowcharts; however there could be some slight changes during the developing process
+
+![Image](./assets/images/Flowchart01.png)
+![Image](./assets/images/Flowchart02.png)
+![Image](./assets/images/Flowchart03.png)
 
 #### Plans For Improvement
 
@@ -92,5 +97,14 @@ Providing it in multiple languages</p>
 
 #### Screenshots
 
-- Desktop index page
-- Desktop index page with recent searches
+- Index page ![Image](./assets/images/IndexPage.png)
+
+- Analyse page Flights ![Image](./assets/images/AnalysePageFlights.png)
+
+- Analyse page Vehicles ![Image](./assets/images/AnalysePageVehicles.png)
+
+- Plan page ![Image](./assets/images/PlanPage.png)
+
+- Plan with recent search ![Image](./assets/images/PlanPageHistory.png)
+
+- Local Storage ![Image](./assets/images/LocalStorage.png)
