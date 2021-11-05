@@ -445,6 +445,7 @@ const getEmissionDataFromStorage = function () {
 };
 
 const savePlanToLocalStorageFlight = function () {
+  $("#save-to-plan-btn").off("click");
   // save the data into local storage
   let emissionData = getEmissionDataFromStorage();
   let currentFlightPlan = {
@@ -466,6 +467,7 @@ const savePlanToLocalStorageFlight = function () {
 };
 
 const savePlanToLocalStorageVehicle = function (event) {
+  $("#save-to-plan-btn").off("click");
   // save the data into local storage
   event.preventDefault();
   let emissionData = getEmissionDataFromStorage();
