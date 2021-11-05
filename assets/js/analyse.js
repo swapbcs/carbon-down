@@ -62,10 +62,10 @@ const getVehicleModelOptions = function (data) {
 // function to sort iatas alphabetically
 const sortIatas = function (a, b) {
   if (a.name > b.name) {
-    return -1;
+    return 1;
   }
   if (a.name < b.name) {
-    return 1;
+    return -1;
   }
   return 0;
 };
@@ -87,7 +87,7 @@ const getIataOptions = function () {
     .sort(sortIatas)
     .map(
       (airportIataObj) =>
-        `<option class="vehicle-option" value=${airportIataObj.iata} selected>${airportIataObj.name} (${airportIataObj.iata})</option>`
+        `<option class="vehicle-option" value=${airportIataObj.iata}>${airportIataObj.name} (${airportIataObj.iata})</option>`
     );
 
   return iataOptions;
