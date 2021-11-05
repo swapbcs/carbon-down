@@ -89,7 +89,7 @@ const renderToDropdown = function (options) {
 };
 
 const renderPassengers = function () {
-  return `<div class="column is-one-third">
+  return `<div class="column is-one-fifth">
     <p class="is-size-4 pb-4 pl-6">Passengers</p>
     <div class="select is-info pl-6">
       <select
@@ -124,7 +124,8 @@ const renderFlightFormElements = function () {
 };
 
 const renderVehicleMake = function (options) {
-  return `<div class="column">
+  return `<div class="column is-narrow">
+  <p class="is-size-4 pb-4 has-text-centered">Brand</p>
     <div class="select is-info is-hovered">
       <select id="vehicle-make">${options}</select>
     </div>
@@ -132,7 +133,8 @@ const renderVehicleMake = function (options) {
 };
 
 const renderVehicleModel = function (options) {
-  return `<div class="column" id="vehicle-models-dropdown">
+  return `<div class="column is-narrow id="vehicle-models-dropdown">
+  <p class="is-size-4 pb-4">Model</p>
     <div class="select is-info is-hovered">
       <select id="vehicle-model">${options}</select>
     </div>
@@ -140,9 +142,9 @@ const renderVehicleModel = function (options) {
 };
 
 const renderDistance = function () {
-  return `
-  <div class="column">
-    <div">
+  return `<div class="column is-narrow">
+  <p class="is-size-4 pb-4 has-text-centered">Distance</p>
+    <div>
       <input
         class="input is-medium is-info is-hovered"
         type="number"
@@ -172,36 +174,42 @@ const renderVehicleFormElements = async function () {
 };
 
 const renderVehicleCarbonCard = function (data) {
-  const card = `<div class="card">
+  const card = `<div class="columns is-centered">
+  <div class="card has-background-danger-light mb-6">
     <div class="card-content">
-      <div class="content">
+      <div class="content has-text-centered">
         <div class="is-size-3">${data.data.attributes.vehicle_make} - ${
     data.data.attributes.vehicle_model
   } (${data.data.attributes.vehicle_year})</div>
         <hr />
-        <div class="is-size-4 my-2">Carbon Emissions</div>
+        <div class="has-text-info is-size-3">Carbon Emissions</div>
         <div class="my-4">
         
           <div class="is-size-5 p-2">${
             data.data.attributes.carbon_lb
           } pounds</div>
-          <div class="is-size-5 p-2">${
+          <div class="has-text-info is-size-3 p-2">${
             data.data.attributes.carbon_kg
           } kilograms</div>
-          <div class="title is-3 p-2 has-text-danger">You would need ${Math.ceil(
+          <div class="title is-size-4 p-2 has-text-danger">You would need ${Math.ceil(
             data.data.attributes.carbon_kg / 22
-          )} tree(s) and a whole year to offset your emissions!</div>
+          )} tree(s) and a whole year <br /> to offset your emissions!</div>
         </div>
       </div>
       <div>
-        <button
-          class="button is-success is-medium is-rounded card-footer-item"
+        <div class="columns is-centered">
+          <div class="column is-flex-grow-0">
+          <button
+          class="button is-success is-medium is-rounded card-footer-item is-size-4"
           id="save-to-plan-btn"
-        >
+          >
           Save To Plan
-        </button>
+          </button>
+          <div>
+        <div>
       </div>
     </div>
+  </div>
   </div>`;
 
   // empty parent
@@ -220,7 +228,7 @@ let currentEmissionData = null;
 const renderFlightCarbonCard = function (data) {
   // construct card
   const card = `<div class="columns is-centered">
-    <div class="card">
+    <div class="card has-background-danger-light mb-6">
     <div class="card-content">
       <div class="content has-text-centered">
         <div class="is-size-3">${
@@ -233,13 +241,13 @@ const renderFlightCarbonCard = function (data) {
           } passengers</span>
         </div>
         <hr />
-        <div class="is-size-4 my-2">Carbon Emissions</div>
+        <div class="has-text-info is-size-3">Carbon Emissions</div>
         <div class="my-4">
          
           <div class="is-size-5 p-2">${
             data.data.attributes.carbon_lb
           } pounds</div>
-          <div class="is-size-5 p-2">${
+          <div class="has-text-info is-size-3 p-2">${
             data.data.attributes.carbon_kg
           } kilograms</div>
           <div class="title is-size-4 p-2 has-text-danger">You would need ${Math.floor(
@@ -248,13 +256,16 @@ const renderFlightCarbonCard = function (data) {
          
         </div>
       </div>
-      <div class="buttons is-centered">
-        <button
-          class="button is-success is-medium is-rounded card-footer-item is-size-4"
-          id="save-to-plan-btn"
-        >
-          Save To Plan
-        </button>
+        <div class="columns is-centered">
+          <div class="column is-flex-grow-0">
+     
+            <button
+            class="button is-success is-medium is-rounded card-footer-item is-size-4"
+            id="save-to-plan-btn"
+            >
+            Save To Plan
+            </button>
+        </div>
       </div>
     </div>
     </div>
