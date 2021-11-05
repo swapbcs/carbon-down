@@ -76,7 +76,7 @@ To keep all my analysed data in one place , I’m able to save and display them 
 
 - The following APIs are implemented in this project:
 - [Carbon Interface](https://www.carboninterface.com)
-- [Iata](https://www.iata.org/en/services/statistics),<p>here we used the API to save the airports' information and later we use it as an object locally</p>
+- [Iata](https://www.iata.org/en/services/statistics),here we used the API to save the airports' information and later we use it as an object locally
 
 #### Wireframes
 
