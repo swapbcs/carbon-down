@@ -7,7 +7,7 @@
 - [Project Link](#project-link)
 - [Getting Started](#getting-started)
 - [Contributors](#contributors)
-- [About The oject](#about-the-project)
+- [About The project](#about-the-project)
 
   - [User Flow](#user-flows)
   - [Technologies Used](#technologies-used)
@@ -26,9 +26,9 @@
 
 ### Project Link
 
-- Please click here [here](https://github.com/jitasek/carbon-down) to see the contents of our project in Github
-- Here [here](https://jitasek.github.io/carbon-down/) you can access directly the web page
-- Please click here [here](https://docs.google.com/presentation/d/1TYoXgIxT0TbWKb5QAIZFguArPE2ShADOfkmo18jEbus/edit#slide=id.gfd4231a3f5_0_3) to see the presentation of the project
+- Please click [here](https://github.com/jitasek/carbon-down) to see the contents of our project in Github
+- [here](https://jitasek.github.io/carbon-down/) you can access directly the web page
+- Please click [here](https://docs.google.com/presentation/d/1TYoXgIxT0TbWKb5QAIZFguArPE2ShADOfkmo18jEbus/edit#slide=id.gfd4231a3f5_0_3) to see the presentation of the project
 
 ### Getting Started
 
@@ -75,8 +75,8 @@ To keep all my analysed data in one place , I’m able to save and display them 
 #### Web APIs
 
 - The following APIs are implemented in this project:
-  [Carbon Interface](https://www.carboninterface.com)
-  [Iata](https://www.iata.org/en/services/statistics),<p>here we used the API to save the airports' information and later we use it as an object locally</p>
+- [Carbon Interface](https://www.carboninterface.com)
+- [Iata](https://www.iata.org/en/services/statistics),<p>here we used the API to save the airports' information and later we use it as an object locally</p>
 
 #### Wireframes
 
