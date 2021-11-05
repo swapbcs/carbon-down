@@ -224,15 +224,19 @@ const renderVehicleCarbonCard = function (data) {
       <div>
         <div class="columns is-centered">
           <div class="column is-flex-grow-0">
-          <button
-          class="button is-success is-medium is-rounded card-footer-item is-size-4"
-          id="save-to-plan-btn"
-          >
-          Save To Plan
-          </button>
-          <button class="delete-card button is-danger is-medium is-rounded card-footer-item is-size-4">Delete</button>
-          <div>
-        <div>
+            <button class="delete-card button is-danger is-medium is-rounded card-footer-item is-size-4">Delete</button>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-flex-grow-0">
+            <button
+            class="button is-info is-medium is-rounded card-footer-item is-size-4"
+            id="save-to-plan-btn"
+            >
+            Save To Plan
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -284,14 +288,18 @@ const renderFlightCarbonCard = function (data) {
       </div>
         <div class="columns is-centered">
           <div class="column is-flex-grow-0">
-     
+            <button class="delete-card button is-danger is-medium is-rounded card-footer-item is-size-4">Delete</button>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-flex-grow-0">
             <button
-            class="button is-success is-medium is-rounded card-footer-item is-size-4"
+            class="button is-info is-medium is-rounded card-footer-item is-size-4"
             id="save-to-plan-btn"
             >
             Save To Plan
             </button>
-            <button class="delete-card button is-danger is-medium is-rounded card-footer-item is-size-4">Delete</button>
+          </div>
         </div>
       </div>
     </div>
@@ -508,4 +516,4 @@ $(document).ready(function () {
 
 $("main").on("click", ".delete-card", function (event) {
   $("#carbon-card-container").empty();
-})
+});
