@@ -11,7 +11,7 @@ const getVehicleMakeOptions = async () => {
     "https://www.carboninterface.com/api/v1/vehicle_makes",
     {
       headers: {
-        Authorization: "Bearer z1rbt2UbgivqgTTuUQSg",
+        Authorization: "Bearer Kp3Os6R725QjjSpSXGlXHw",
       },
     }
   );
@@ -326,7 +326,7 @@ const handleVehicleMakeChange = async function () {
     `https://www.carboninterface.com/api/v1/vehicle_makes/${vehicleMakeId}/vehicle_models/`,
     {
       headers: {
-        Authorization: "Bearer z1rbt2UbgivqgTTuUQSg",
+        Authorization: "Bearer Kp3Os6R725QjjSpSXGlXHw",
       },
     }
   );
@@ -386,7 +386,7 @@ const handleFormSubmit = async function (event) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer z1rbt2UbgivqgTTuUQSg",
+          Authorization: "Bearer Kp3Os6R725QjjSpSXGlXHw",
         },
         body: JSON.stringify({
           type: "flight",
@@ -418,7 +418,7 @@ const handleFormSubmit = async function (event) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer z1rbt2UbgivqgTTuUQSg",
+          Authorization: "Bearer Kp3Os6R725QjjSpSXGlXHw",
         },
         body: JSON.stringify({
           type: "vehicle",
