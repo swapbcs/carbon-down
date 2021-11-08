@@ -58,7 +58,7 @@ It throws light on the carbon impact of their travels with the aim to raise awar
 
 #### User Flow
 
-<p>As a travel, I want to analyse my already planned travel trips by flight and/or car, so that I can get an idea about the carbon emission caused by the trip.
+<p>As a traveller, I want to analyse my already planned travel trips by flight and/or car, so that I can get an idea about the carbon emission caused by the trip.
 To keep all my analysed data in one place , I’m able to save and display them on a page.</p>
 
 #### Technologies Used
@@ -110,4 +110,4 @@ Providing it in multiple languages</p>
 
 - Local Storage ![Image](./assets/images/LocalStorage.png)
 
-- Local Storage ![Image](./assets/images/AboutUs.png)
+- About Us ![Image](./assets/images/AboutUs.png)
