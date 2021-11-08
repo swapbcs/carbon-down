@@ -11,7 +11,7 @@ const getVehicleMakeOptions = async () => {
     "https://www.carboninterface.com/api/v1/vehicle_makes",
     {
       headers: {
-        Authorization: "Bearer z1rbt2UbgivqgTTuUQSg",
+        Authorization: "Bearer Kp3Os6R725QjjSpSXGlXHw",
       },
     }
   );
@@ -19,7 +19,7 @@ const getVehicleMakeOptions = async () => {
   // construct option elements
 
   const vehicleMakeOptions = data.sort(sortVehicles).map((vehicleMake) => {
-    return `<option class="vehicle-option" value=${vehicleMake.data.id} selected>${vehicleMake.data.attributes.name}</option>`;
+    return `<option class="vehicle-option" value=${vehicleMake.data.id}>${vehicleMake.data.attributes.name}</option>`;
   });
 
   // return options
@@ -53,7 +53,7 @@ const getVehicleModelOptions = function (data) {
   const vehicleModelOptions = data
     .filter((v, index) => doesMatchExists(v, index, data))
     .map((vehicleModel) => {
-      return `<option class="vehicle-option" value=${vehicleModel.data.id} selected>${vehicleModel.data.attributes.name} ${vehicleModel.data.attributes.year}</option>`;
+      return `<option class="vehicle-option" value=${vehicleModel.data.id}>${vehicleModel.data.attributes.name} ${vehicleModel.data.attributes.year}</option>`;
     });
 
   return vehicleModelOptions;
@@ -62,10 +62,10 @@ const getVehicleModelOptions = function (data) {
 // function to sort iatas alphabetically
 const sortIatas = function (a, b) {
   if (a.name > b.name) {
-    return -1;
+    return 1;
   }
   if (a.name < b.name) {
-    return 1;
+    return -1;
   }
   return 0;
 };
@@ -87,7 +87,7 @@ const getIataOptions = function () {
     .sort(sortIatas)
     .map(
       (airportIataObj) =>
-        `<option class="vehicle-option" value=${airportIataObj.iata} selected>${airportIataObj.name} (${airportIataObj.iata})</option>`
+        `<option class="vehicle-option" value=${airportIataObj.iata}>${airportIataObj.name} (${airportIataObj.iata})</option>`
     );
 
   return iataOptions;
@@ -224,15 +224,19 @@ const renderVehicleCarbonCard = function (data) {
       <div>
         <div class="columns is-centered">
           <div class="column is-flex-grow-0">
-          <button
-          class="button is-success is-medium is-rounded card-footer-item is-size-4"
-          id="save-to-plan-btn"
-          >
-          Save To Plan
-          </button>
-          <button class="delete-card button is-danger is-medium is-rounded card-footer-item is-size-4">Delete</button>
-          <div>
-        <div>
+            <button class="delete-card button is-danger is-medium is-rounded card-footer-item is-size-4">Delete</button>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-flex-grow-0">
+            <button
+            class="button is-info is-medium is-rounded card-footer-item is-size-4"
+            id="save-to-plan-btn"
+            >
+            Save To Plan
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -259,7 +263,7 @@ const renderFlightCarbonCard = function (data) {
       <div class="content has-text-centered">
         <div class="is-size-3">${
           data.data.attributes.legs[0].departure_airport
-        } -> ${data.data.attributes.legs[0].destination_airport}</div>
+        } <i class="fas fa-arrow-alt-circle-right"></i> ${data.data.attributes.legs[0].destination_airport}</div>
         <div class="is-size-5">
           <i class="fas fa-users"></i>
           <span class="ml-3">${
@@ -284,14 +288,18 @@ const renderFlightCarbonCard = function (data) {
       </div>
         <div class="columns is-centered">
           <div class="column is-flex-grow-0">
-     
+            <button class="delete-card button is-danger is-medium is-rounded card-footer-item is-size-4">Delete</button>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-flex-grow-0">
             <button
-            class="button is-success is-medium is-rounded card-footer-item is-size-4"
+            class="button is-info is-medium is-rounded card-footer-item is-size-4"
             id="save-to-plan-btn"
             >
             Save To Plan
             </button>
-            <button class="delete-card button is-danger is-medium is-rounded card-footer-item is-size-4">Delete</button>
+          </div>
         </div>
       </div>
     </div>
@@ -318,7 +326,7 @@ const handleVehicleMakeChange = async function () {
     `https://www.carboninterface.com/api/v1/vehicle_makes/${vehicleMakeId}/vehicle_models/`,
     {
       headers: {
-        Authorization: "Bearer z1rbt2UbgivqgTTuUQSg",
+        Authorization: "Bearer Kp3Os6R725QjjSpSXGlXHw",
       },
     }
   );
@@ -378,7 +386,7 @@ const handleFormSubmit = async function (event) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer z1rbt2UbgivqgTTuUQSg",
+          Authorization: "Bearer Kp3Os6R725QjjSpSXGlXHw",
         },
         body: JSON.stringify({
           type: "flight",
@@ -410,7 +418,7 @@ const handleFormSubmit = async function (event) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer z1rbt2UbgivqgTTuUQSg",
+          Authorization: "Bearer Kp3Os6R725QjjSpSXGlXHw",
         },
         body: JSON.stringify({
           type: "vehicle",
@@ -445,6 +453,7 @@ const getEmissionDataFromStorage = function () {
 };
 
 const savePlanToLocalStorageFlight = function () {
+  $("#save-to-plan-btn").off("click");
   // save the data into local storage
   let emissionData = getEmissionDataFromStorage();
   let currentFlightPlan = {
@@ -466,6 +475,7 @@ const savePlanToLocalStorageFlight = function () {
 };
 
 const savePlanToLocalStorageVehicle = function (event) {
+  $("#save-to-plan-btn").off("click");
   // save the data into local storage
   event.preventDefault();
   let emissionData = getEmissionDataFromStorage();
@@ -506,4 +516,4 @@ $(document).ready(function () {
 
 $("main").on("click", ".delete-card", function (event) {
   $("#carbon-card-container").empty();
-})
+});

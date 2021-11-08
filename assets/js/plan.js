@@ -23,7 +23,7 @@ const renderFlightCarbonCard = function (emissionData) {
         <div class="card has-background-danger-light mb-6">
         <div class="card-content">
         <div class="content has-text-centered">
-            <div class="is-size-3">${flightsData[i].departure_airport} -> ${
+            <div class="is-size-3">${flightsData[i].departure_airport} <i class="fas fa-arrow-alt-circle-right"></i> ${
       flightsData[i].destination_airport
     }</div>
             <div class="is-size-5">
